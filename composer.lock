@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "230afc6342d9bccf21d310110181584f",
+    "content-hash": "daf910aeaf10357cd3a3233a169b05be",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -74,6 +74,68 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "doppar/framework",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doppar/framework.git",
+                "reference": "df27c09c0c9170aad5f6b43797ea715495e3e9e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doppar/framework/zipball/df27c09c0c9170aad5f6b43797ea715495e3e9e1",
+                "reference": "df27c09c0c9170aad5f6b43797ea715495e3e9e1",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "^3.0",
+                "nesbot/carbon": "^3.8",
+                "php": "^8.3",
+                "phpmailer/phpmailer": "^6.9",
+                "ramsey/collection": "^2.1",
+                "symfony/console": "^7.2",
+                "symfony/process": "^7.2",
+                "symfony/var-dumper": "^7.1",
+                "vlucas/phpdotenv": "^5.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^11.5.3"
+            },
+            "suggest": {
+                "ext-pdo": "Required to use all database features."
+            },
+            "type": "package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Phaseolies/Helpers/helpers.php"
+                ],
+                "psr-4": {
+                    "Phaseolies\\": "src/Phaseolies/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The Doppar Framework",
+            "homepage": "https://doppar.com",
+            "keywords": [
+                "doppar",
+                "framework"
+            ],
+            "support": {
+                "issues": "https://github.com/doppar/doppar/issues",
+                "source": "https://github.com/doppar/doppar"
+            },
+            "time": "2025-04-23T16:54:41+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2007,75 +2069,6 @@
                 }
             ],
             "time": "2024-07-20T21:52:34+00:00"
-        },
-        {
-            "name": "zuno/zuno",
-            "version": "v7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/techmahedy/zuno.git",
-                "reference": "02c895c6d823fcfd20ff1ebbc28873f9725c65ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/techmahedy/zuno/zipball/02c895c6d823fcfd20ff1ebbc28873f9725c65ec",
-                "reference": "02c895c6d823fcfd20ff1ebbc28873f9725c65ec",
-                "shasum": ""
-            },
-            "require": {
-                "monolog/monolog": "^3.0",
-                "nesbot/carbon": "^3.8",
-                "php": "^8.3",
-                "phpmailer/phpmailer": "^6.9",
-                "ramsey/collection": "^2.1",
-                "symfony/console": "^7.2",
-                "symfony/process": "^7.2",
-                "symfony/var-dumper": "^7.1",
-                "vlucas/phpdotenv": "^5.5"
-            },
-            "require-dev": {
-                "fakerphp/faker": "^1.23"
-            },
-            "suggest": {
-                "ext-pdo": "Required to use all database features.",
-                "fakerphp/faker": "Required to use the eloquent factory builder"
-            },
-            "type": "package",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/zuno/Helpers/helpers.php"
-                ],
-                "psr-4": {
-                    "App\\": "app/",
-                    "Zuno\\": "src/zuno/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "mahedi hasan",
-                    "email": "mahedy150101@gmail.com"
-                }
-            ],
-            "description": "The Zuno framework",
-            "homepage": "https://zuno.com",
-            "keywords": [
-                "framework",
-                "zuno"
-            ],
-            "support": {
-                "issues": "https://github.com/techmahedy/zuno/issues",
-                "source": "https://github.com/techmahedy/zuno"
-            },
-            "time": "2025-04-18T14:33:10+00:00"
         }
     ],
     "packages-dev": [
