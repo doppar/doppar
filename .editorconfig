@@ -1,0 +1,38 @@
+root = true
+
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# PHP files (including .php, .phtml, etc.)
+[*.php]
+indent_style = space
+indent_size = 4
+
+# Frontend files (JS, CSS, Vue, etc.)
+[*.{js,jsx,ts,tsx,css,scss,vue}]
+indent_style = space
+indent_size = 2
+
+# Configuration files (YAML, JSON, INI)
+[*.{yml,yaml,json,ini}]
+indent_size = 2
+indent_style = space
+
+# Markdown documentation
+[*.md]
+trim_trailing_whitespace = false  # Important for Markdown line breaks
+
+# Composer and package files (specific exceptions)
+[composer.json]
+indent_size = 4
+
+[package.json]
+indent_size = 2
+
+# Shell scripts
+[*.sh]
+indent_style = tab

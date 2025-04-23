@@ -1,0 +1,14 @@
+/storage
+/vendor
+/.idea
+/.vscode
+.env
+config.php
+!.env.example
+/.phpunit.cache
+/vendor
+/package
+composer.phar
+/public/storage
+.phpunit.result.cache
+.idea

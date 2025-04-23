@@ -1,0 +1,32 @@
+php:
+  preset: recommended
+  version: 8
+  rules:
+    modernize_str_types: true
+    native_function_invocation:
+      include: ['@all']
+      scope: 'namespaced'
+      strict: false
+  enabled:
+    - strict_param
+    - declare_strict_types
+  enabled:
+    - strict_comparison
+  disabled:
+    - no_unused_imports
+  finder:
+    not-name:
+      - index.php
+      - server.php
+    exclude:
+      - "storage"        # Exclude generated files
+
+js:
+  preset: recommended
+  finder:
+    not-name:
+
+css:
+  preset: recommended
+  disabled:
+    - vendor_prefixes
