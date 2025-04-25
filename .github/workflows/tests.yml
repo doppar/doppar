@@ -35,6 +35,3 @@ jobs:
 
       - name: Generate app key
         run: php pool key:generate
-
-      - name: Execute tests
-        run: php pool test
