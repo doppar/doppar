@@ -8,7 +8,7 @@
 <a href="https://github.com/doppar/doppar/actions/workflows/tests.yml"><img src="https://github.com/doppar/doppar/actions/workflows/tests.yml/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/doppar/doppar"><img src="https://img.shields.io/packagist/dt/doppar/doppar" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/doppar/doppar"><img src="https://img.shields.io/packagist/v/doppar/doppar" alt="Latest Stable Version"></a>
-<a href="https://github.com/doppar/doppar/blob/main/LICENSE"><img src="https://img.shields.io/github/license/doppar/doppar" alt="License"></a>
+<a href="https://github.com/doppar/framework/blob/main/LICENSE"><img src="https://img.shields.io/github/license/doppar/doppar" alt="License"></a>
 </p>
 
 ## About Doppar
