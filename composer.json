@@ -42,6 +42,9 @@
         ],
         "post-create-project-cmd": [
             "@php pool key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "rm -f phpunit.xml.dist LICENSE.md"
         ]
     },
     "config": {
