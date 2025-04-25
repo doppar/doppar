@@ -10,7 +10,6 @@
     ],
     "require": {
         "php": "^8.3",
-        "doppar/flarion": "^1.0",
         "doppar/framework": "^1.0"
     },
     "require-dev": {
