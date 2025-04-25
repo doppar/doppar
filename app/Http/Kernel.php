@@ -14,19 +14,32 @@ class Kernel extends Middleware
      * @var array
      */
     public array $middleware = [
-        \Phaseolies\Middleware\CsrfTokenMiddleware::class,
+        //
     ];
 
     /**
-     * The application's route middleware.
+     * The application's route middleware groups.
+     *
+     * @var array<string, array<int, class-string|string>>
+     */
+    public $middlewareGroups = [
+        'web' => [
+            \Phaseolies\Middleware\CsrfTokenMiddleware::class,
+        ],
+        'api' => [
+            //
+        ],
+    ];
+
+    /**
+     * The application's route specific middleware.
      *
      * These middleware may be assigned to groups or used individually.
      *
      * @var array
      */
-    protected array $routeMiddleware = [
+    public array $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'guest' => \App\Http\Middleware\GuestMiddleware::class,
-        'auth-api' => \Doppar\Flarion\Http\Middleware\AuthenticateApi::class,
     ];
 }

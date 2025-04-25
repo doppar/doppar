@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daf910aeaf10357cd3a3233a169b05be",
+    "content-hash": "024fb94bdb0c148c7ccd7d048ac5ef5c",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -76,17 +76,68 @@
             "time": "2024-02-09T16:56:22+00:00"
         },
         {
-            "name": "doppar/framework",
-            "version": "v1.0.2",
+            "name": "doppar/flarion",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doppar/framework.git",
-                "reference": "df27c09c0c9170aad5f6b43797ea715495e3e9e1"
+                "url": "https://github.com/doppar/flarion.git",
+                "reference": "1fe5f447d1fac542bde915fbb5f3628174adbe57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doppar/framework/zipball/df27c09c0c9170aad5f6b43797ea715495e3e9e1",
-                "reference": "df27c09c0c9170aad5f6b43797ea715495e3e9e1",
+                "url": "https://api.github.com/repos/doppar/flarion/zipball/1fe5f447d1fac542bde915fbb5f3628174adbe57",
+                "reference": "1fe5f447d1fac542bde915fbb5f3628174adbe57",
+                "shasum": ""
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^11.5.3"
+            },
+            "type": "library",
+            "extra": {
+                "doppar": {
+                    "providers": [
+                        "Doppar\\Flarion\\FlarionServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doppar\\Flarion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahedi Hasan",
+                    "email": "mahedi@doppar.com"
+                }
+            ],
+            "description": "Doppar API Authentication package",
+            "support": {
+                "issues": "https://github.com/doppar/flarion/issues",
+                "source": "https://github.com/doppar/flarion"
+            },
+            "time": "2025-04-24T16:45:39+00:00"
+        },
+        {
+            "name": "doppar/framework",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doppar/framework.git",
+                "reference": "81751d42570784424be64c66f2b354430f166dc6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doppar/framework/zipball/81751d42570784424be64c66f2b354430f166dc6",
+                "reference": "81751d42570784424be64c66f2b354430f166dc6",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +186,7 @@
                 "issues": "https://github.com/doppar/doppar/issues",
                 "source": "https://github.com/doppar/doppar"
             },
-            "time": "2025-04-23T16:54:41+00:00"
+            "time": "2025-04-23T17:29:52+00:00"
         },
         {
             "name": "graham-campbell/result-type",

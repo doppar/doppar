@@ -3,12 +3,8 @@
 namespace App\Models;
 
 use Phaseolies\Database\Eloquent\Model;
-use Doppar\Flarion\Tokenable;
-
 class User extends Model
 {
-    use Tokenable;
-
     /**
      * Primary Key
      *

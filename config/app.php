@@ -95,7 +95,6 @@ return [
     |
     */
     'providers' => [
-        App\Providers\AppServiceProvider::class,
-        Phaseolies\Flarion\FlarionServiceProvider::class,
+        App\Providers\AppServiceProvider::class
     ],
 ];
