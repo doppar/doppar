@@ -5878,8 +5878,10 @@ class User extends Model
 {
     use Tokenable;
 }
+```
 
-To issue a token, you may use the `createToken` method. The `createToken` method returns a Doppar\Flarion\NewAccessToken instance. 
+To issue a token, you may use the `createToken` method. The `createToken` method returns a Doppar\Flarion\NewAccessToken instance.
+
 ```php
 use Phaseolies\Http\Request;
 
@@ -5928,6 +5930,17 @@ Each ability must exactly match one of the abilities assigned to the token. If a
 To ensure that all incoming API requests are authenticated, you should apply the Flarion authentication guard to any protected routes in your application — typically inside your `routes/api.php` file.
 
 Flarion handles stateless authentication using API tokens, so every request must include a valid token in the Authorization header. This makes it perfect for mobile apps, external clients, or any token-driven access.
+
+First register the flarion middleware inside your `App\Http\Kernel.php` file.
+```php
+public array $routeMiddleware = [
+    'auth-api' => \Doppar\Flarion\Http\Middleware\AuthenticateApi::class,
+];
+```
+
+Now you can use `auth-api` middleware to protect your route.
+
+
 ```php
 use Phaseolies\Http\Request;
 
