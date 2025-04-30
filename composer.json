@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^8.3",
-        "doppar/framework": "^1.0"
+        "doppar/framework": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -44,7 +44,7 @@
             "@php pool key:generate --ansi"
         ],
         "post-install-cmd": [
-            "rm -f phpunit.xml.dist LICENSE.md"
+            "rm -f LICENSE.md"
         ]
     },
     "config": {

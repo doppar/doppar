@@ -30,5 +30,8 @@ return [
             'max_height' => 'The :attribute must have a maximum height of :max_height pixels.',
         ],
         'max' => 'The :attribute may not be greater than :max kilobytes.',
+    ],
+    'rate_limit' => [
+        'error' => 'Too Many Attempts. Please try again after :attribute seconds.',
     ]
 ];

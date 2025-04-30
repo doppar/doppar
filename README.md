@@ -60,6 +60,8 @@ Doppar is a PHP framework built to revolutionize the way developers create robus
   - [URL Generation](#section-48)
   - [Pool Console](#section-28)
   - [Encryption & Decryption](#section-30)
+  - [Rate Limiter](#rate-limiter)
+  - [Caching](#caching)
 - **Database**
   - [Database Connection](#section-32)
   - [Migration](#section-33)
@@ -3855,6 +3857,107 @@ class UserController extends Controller
         $encrypted // This is now decrypted
     }
 }
+```
+<a name="rate-limiter"></a>
+
+## Rate Limiter
+Rate limiting is a technique used to control the number of requests a client can make to an API within a specified timeframe. It helps prevent abuse, reduce server load, and enhance security by limiting how frequently a user can access a given route.
+
+In the Doppar PHP framework, you can apply rate limiting to specific routes using middleware.
+```php
+Route::get('show', [PostController::class, 'index'])
+    ->middleware(['throttle:10,1']);
+```
+Here `throttle:10,1` Limits requests to 10 per minute. This means that any client (such as a browser, mobile app, or script) can call the `/show` endpoint up to 10 times per minute. If they exceed this limit, the server will respond with a 429 Too Many Requests status code.
+
+### Customizing Rate Limits
+You can customize the rate limit by changing the parameters:
+```
+throttle:<max_requests>,<decay_minutes>
+```
+For example:
+- throttle:5,1 – 5 requests per minute
+- throttle:100,60 – 100 requests per hour
+
+<a name="caching"></a>
+
+## Caching
+Caching is a powerful technique that stores frequently accessed data in a temporary storage layer, reducing the need to repeatedly perform expensive operations (like database queries or API calls). By using caching in your application, you can significantly improve performance and reduce server load.
+
+The Doppar PHP framework provides a flexible caching system that supports multiple drivers and implements the PSR-16 SimpleCache standard for interoperability.
+
+### Configuration
+The cache system is configured via the `config/caching.php` file. This file allows you to define:
+
+- The default cache driver.
+- Available cache stores.
+- A global key prefix to prevent collisions.
+
+### Supported Drivers
+Doppar supports a range of cache backends:
+
+| Driver  | Description                             |
+|---------|-----------------------------------------|
+| file    | Stores cache files on disk              |
+| redis   | Uses Redis for high-performance caching |
+| array   | Stores in memory (useful for testing)   |
+| apc     | Uses APCu PHP extension                 |
+
+🛠️ You can define custom adapters and drivers to suit your infrastructure needs.
+
+### Usage
+Doppar provides a convenient caching facade to simplify working with cache in your controllers and services.
+```php
+use Phaseolies\Support\Facades\Cache;
+
+// Store an item for 60 seconds
+Cache::set('name', 'Mahedi', 60);
+
+// Retrieve an item
+$name = Cache::get('name', 'Default Value');
+
+// Check if a key exists
+$exists = Cache::has('name');
+
+// Remove an item
+Cache::delete('name');
+```
+
+### Working With Multiple Items
+```php
+Cache::setMultiple([
+    'key1' => 'value1',
+    'key2' => 'value2'
+], 60);
+
+$values = Cache::getMultiple(['key1', 'key2'], 'default');
+
+// Remove multiple items
+Cache::deleteMultiple(['key1', 'key2']);
+```
+
+### Advanced Operations
+```php
+// Increment or decrement cache values
+Cache::increment('counter', 2);
+Cache::decrement('counter');
+
+// Add a new item only if it doesn't already exist
+Cache::add('user_id_123', 'John Doe', 120);
+
+// Store an item forever (without TTL)
+Cache::forever('config_loaded', true);
+
+// Clear entire cache store
+Cache::clear();
+```
+
+### Custom Cache Store Implementation
+Under the hood, Doppar uses the `\Phaseolies\Cache\CacheStore` class which implements the PSR `CacheInterface` and works with Symfony’s `AdapterInterface`. This design allows you to easily switch or extend cache drivers while maintaining a consistent API.
+
+```php
+$store = new \Phaseolies\Cache\CacheStore($adapter, 'my_prefix_');
+$store->set('custom_key', 'value', 300);
 ```
 
 <a name="section-32"></a>

@@ -10,4 +10,5 @@
 composer.phar
 /public/storage
 .phpunit.result.cache
+phpunit.xml.dist
 .idea

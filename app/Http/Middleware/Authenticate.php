@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use Phaseolies\Support\Facades\Auth;
 use Phaseolies\Middleware\Contracts\Middleware;
 use Phaseolies\Http\Response;
 use Phaseolies\Http\Request;
 use Closure;
-use Phaseolies\Support\Facades\Auth;
 
 class Authenticate implements Middleware
 {

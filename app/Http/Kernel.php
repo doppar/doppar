@@ -13,9 +13,7 @@ class Kernel extends Middleware
      *
      * @var array
      */
-    public array $middleware = [
-        //
-    ];
+    public array $middleware = [];
 
     /**
      * The application's route middleware groups.
@@ -26,9 +24,7 @@ class Kernel extends Middleware
         'web' => [
             \Phaseolies\Middleware\CsrfTokenMiddleware::class,
         ],
-        'api' => [
-            //
-        ],
+        'api' => [],
     ];
 
     /**
@@ -41,5 +37,6 @@ class Kernel extends Middleware
     public array $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'guest' => \App\Http\Middleware\GuestMiddleware::class,
+        'throttle' => \Phaseolies\Middleware\ThrottleRequests::class,
     ];
 }
