@@ -2,8 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Comment;
 use Phaseolies\Database\Migration\Seeder;
+use App\Models\User;
+use App\Models\Tag;
+use App\Models\Post;
+use App\Models\PostTag;
+use App\Models\Reply;
 
 class UserSeeder extends Seeder
 {

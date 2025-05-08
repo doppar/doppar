@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Phaseolies\Database\Eloquent\Model;
+
 class User extends Model
 {
     /**

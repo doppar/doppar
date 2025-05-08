@@ -18,11 +18,11 @@ return [
     'int' => 'The :attribute must be an integer.',
     'float' => 'The :attribute must be a float with :decimal decimal places.',
     'between' => 'The :attribute must be between :min and :max.',
-    'same_as' => 'The :attribute must match :other.',
+    'same_as' => 'The :attribute and the :other value should be same.',
     'file' => [
         'required' => 'The :attribute file is required.',
         'image' => 'The :attribute must be an image.',
-        'mimes' => 'The :attribute must be a file of type: :values.',
+        'mimes' => 'The :attribute must be a file of type :values.',
         'dimensions' => [
             'min_width' => 'The :attribute must have a minimum width of :min_width pixels.',
             'min_height' => 'The :attribute must have a minimum height of :min_height pixels.',

@@ -16,7 +16,7 @@
 
 return [
     'default' => env('DB_CONNECTION', 'mysql'),
-    'timezone' => env('DB_TIMEZONE', '+00:00'),
+
     'connections' => [
         'mysql' => [
             'driver' => 'mysql',
@@ -35,6 +35,7 @@ return [
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET time_zone = '" . env('DB_TIMEZONE', '+00:00') . "'",
             ] : [],
         ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

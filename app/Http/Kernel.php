@@ -35,8 +35,13 @@ class Kernel extends Middleware
      * @var array
      */
     public array $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'guest' => \App\Http\Middleware\GuestMiddleware::class,
-        'throttle' => \Phaseolies\Middleware\ThrottleRequests::class,
+        'web' => [
+            'auth' => \App\Http\Middleware\Authenticate::class,
+            'guest' => \App\Http\Middleware\GuestMiddleware::class,
+            'throttle' => \Phaseolies\Middleware\ThrottleRequests::class,
+        ],
+        'api' => [
+            'throttle' => \Phaseolies\Middleware\ThrottleRequests::class,
+        ]
     ];
 }

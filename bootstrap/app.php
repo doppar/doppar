@@ -11,8 +11,7 @@ define('BASE_PATH', $basePath);
 | Create The Application
 |--------------------------------------------------------------------------
 |
-| Here we create the application instance, providing it with the necessary
-| components: Route, Request, Middleware and Container.
+| Here we create the application instance.
 |
 */
 $app = new Application();

@@ -697,6 +697,9 @@ class AppServiceProvider extends ServiceProvider
     $this->app->bind(ProductInterface::class, fn() => new ProductClass );
 
     $this->app->bind(ProductInterface::class, ProductClass::class);
+
+    // Or you can use app() global helper
+    app()->bind(ProductInterface::class, ProductClass::class);
   }
 
   public function boot(): void
@@ -894,6 +897,10 @@ Below you will find every facade and its underlying class. This is a useful tool
 | Log  | Phaseolies\Support\LoggerService    | log |
 | Sanitize | Phaseolies\Support\Validation\Sanitizer    | sanitize |
 | Cookie | Phaseolies\Support\CookieJar   | cookie |
+| Cache | Phaseolies\Cache\CacheStore   | cache |
+| App | Phaseolies\Application   | app |
+| Schema | Phaseolies\Database\Migration\Schema   | schema |
+
 
 <a name="section-10"></a>
 
@@ -1289,7 +1296,94 @@ User::query()->oldest('id')->get()
 You may need to fetch only some specific columns not all the columns from a model. you can use select() method in this case like
 ```php
 User::query()->select(['name','email'])->get();
+
+// select() with groupBy()
+User::query()->select('name', 'COUNT(*) as count')->groupBy('name')->get();
 ```
+
+### selectRaw()
+Doppar query builder supports expressive, raw SQL selections using the `selectRaw()` method. This allows you to write SQL expressions directly and optionally bind parameters to prevent SQL injection.
+### Basic Usage
+```php
+use App\Models\Order;
+
+$total = Order::query()
+    ->selectRaw('COUNT(*) as order_count')
+    ->first();
+
+echo $total->order_count;
+```
+
+### Calculated Columns
+You can perform calculations using fields in the database:
+```php
+$orders = Order::query()
+    ->selectRaw('price * quantity as total_value')
+    ->get();
+
+foreach ($orders as $order) {
+    echo $order->total_value;
+}
+```
+
+### Multiple selectRaw() Calls
+Multiple selectRaw() calls can be chained. Each one appends to the overall SELECT clause:
+```php
+$orders = Order::query()
+    ->selectRaw('SUM(price) as total_sales')
+    ->selectRaw('AVG(quantity) as average_quantity')
+    ->selectRaw('MAX(price) as highest_price')
+    ->first();
+```
+
+### Using Date Functions with Grouping
+If you need to get data as per month and year, you can use `groupByRaw()` as follows
+
+```php
+$orders = Order::query()
+    ->selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as order_count')
+    ->groupByRaw('YEAR(created_at), MONTH(created_at)')
+    ->get();
+```
+
+### Using Bindings with selectRaw()
+Scenario:
+You're running an e-commerce platform. You store orders in an orders table with these columns:
+
+- price: base price of an item
+- category_id: the category the product belongs to
+- status: whether the order is completed (true) or not
+- created_at: timestamp of the order
+
+You want to:
+- Get the maximum order value after tax (e.g. 8%) and after VAT (e.g. 20%)
+- Only consider completed orders
+- Group results by category
+
+Now assume
+"For each product category, what's the highest order value including tax and VAT, from completed orders?"
+
+```php
+$orders = Order::query()
+    ->selectRaw('MAX(price * ?) AS total_with_tax', [1.08]) // Apply 8% tax
+    ->selectRaw('MAX(price * ?) AS total_with_vat', [1.20]) // Apply 20% VAT
+    ->where('status', true)
+    ->groupByRaw('category_id')
+    ->get(); // use toSql() to see the generated SQL query
+```
+Example output
+| category\_id | total\_with\_tax | total\_with\_vat |
+| ------------ | ---------------- | ---------------- |
+| 1            | 108.00           | 120.00           |
+| 2            | 216.00           | 240.00           |
+| 3            | 162.00           | 180.00           |
+
+Why Use selectRaw Here?
+- You need to run math operations (price * taxRate) directly in SQL.
+- You want to bind the tax rate dynamically (?) to avoid hardcoding values.
+- You’re leveraging SQL’s aggregate function (MAX()) for reporting.
+
+Bindings are passed as an array to selectRaw() and must match the number of ? placeholders in the SQL expression.
 
 ### find() and exists()
 If you need to retrieve data for a specific primary key, you can use the `find()` function. This method allows you to quickly fetch a single record by its unique identifier, making it a convenient and efficient way to access individual entries in your database.
@@ -1491,13 +1585,14 @@ Post::match($request->only(['title', 'user_id']))
 Combine simple and complex filters
 ```php
 Post::match([
-        'user_id' => [1, 2, 3], // WHERE IN
-        'created_at' => null,      // WHERE NULL
+        'user_id' => [1, 2, 3],
+        'created_at' => NULL,
         'active' => function ($query) {
             $query->where('active', '=', 1)
                 ->orWhere('legacy', '=', 1);
         }
-    ])->orderBy('created_at', 'desc')
+    ])
+    ->orderBy('created_at', 'desc')
     ->get();
 ```
 
@@ -1655,17 +1750,14 @@ public function tags()
 And the Tag model will be look like this
 ```php
 // App\Models\Tag.php
-public function tags()
+public function posts()
 {
-    public function posts()
-    {
-        return $this->manyToMany(
-            Post::class,  // Related model
-            'tag_id',   // Foreign key for tags in pivot table
-            'post_id',  // Foreign key for posts in pivot table
-            'post_tag'  // Pivot table name
-        );
-    }
+    return $this->manyToMany(
+        Post::class,  // Related model
+        'tag_id',   // Foreign key for tags in pivot table
+        'post_id',  // Foreign key for posts in pivot table
+        'post_tag'  // Pivot table name
+    );
 }
 ```
 In a many-to-many relationship between `Post` and `Tag`, the `post_tag` pivot table acts as a bridge, storing the associations between `posts` and `tags`. It contains two columns:
@@ -1906,7 +1998,7 @@ Product::query()->max('price');
 #### Minimum Value in a Column
 Find the lowest `price` in the Product table:
 ```php
-Product::query()->max('price');
+Product::query()->min('price');
 ```
 
 #### Standard Deviation Calculation
@@ -1994,13 +2086,38 @@ You can transform a fetched Eloquent collection using the `map` function. This a
 
 Here’s an example of how to extract and return only the name attribute from each user:
 ```php
-return User::all()->map(function ($item) {
-    return [
-        'name' => $item->name
-    ];
-});
+return User::all()
+   ->map(function ($item) {
+        return [
+            'name' => $item->name
+        ];
+    });
 ```
 This approach is useful when you need to customize the response structure while working with Eloquent collections.
+
+You can use `filter()` as well like
+```php
+
+// return those posts which status are 1 with only title and status
+return Post::all()
+    ->map(function ($item) {
+        return [
+            'title' => $item->title,
+            'status' => $item->status
+        ];
+    })
+    ->filter(function ($item) {
+        return $item['status'] === 1;
+    });
+```
+
+You can also use `each()` function like
+```php
+ return Post::query()->newest()->get()
+    ->each(function ($post) {
+        //
+    });
+```
 
 <a name="section-47"></a>
 
@@ -2017,7 +2134,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 
-class AppTestController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
@@ -2051,7 +2168,7 @@ Now call the pagination for views
 ```
 
 ### Customize Default Pagination
-Doppar provides a Bootstrap 5 pagination view by default. However, you can also customize this view to suit your needs. To customize the pagination view, Doppar offers the `publish:pagination` pool command. Running this command will create two files, `jump.blade.php` and `number.blade.php`, inside the `resources/views/pagination` folder. These files allow you to tailor the pagination design to match your application's style.
+Doppar provides a Bootstrap 5 pagination view by default. However, you can also customize this view to suit your needs. To customize the pagination view, Doppar offers the `publish:pagination` pool command. Running this command will create two files, `jump.blade.php` and `number.blade.php`, inside the `resources/views/vendor/pagination` folder. These files allow you to tailor the pagination design to match your application's style.
 
 ```bash
 php pool publish:pagination
@@ -2118,6 +2235,7 @@ In Doppar, Eloquent manual joins allow you to retrieve data from multiple tables
 A simple join operation can be performed using the `join` method to combine records from two tables based on a common key. Below is an example of joining `users` and `posts` tables:
 ```php
 $users = User::query()
+    ->select('posts.*', 'users.name as user_name')
     ->join('posts', 'users.id', '=', 'posts.user_id')
     ->get();
 ```
@@ -2340,7 +2458,10 @@ Doppar has command line interface to create a new middleware. Doppar has `make:m
 ```
 php pool make:middleware Authenticate
 ```
-Then this command will create a new `Authenticate` for you located inside `App\Http\Authenticate` directory
+Then this command will create a new `Authenticate` for you located inside `App\Http\Authenticate` directory.
+
+### Register Middleware
+To register middleware as route specific, you need to update `App\Http\Kernel.php` file and update `$routeMiddleware` arrays like that.
 
 ```php
 <?php
@@ -2353,7 +2474,14 @@ Then this command will create a new `Authenticate` for you located inside `App\H
  * @var array<string, class-string|string>
  */
 protected $routeMiddleware = [
-    'auth' => \App\Http\Middleware\Authenticate::class,
+    public array $routeMiddleware = [
+        'web' => [
+            'auth' => \App\Http\Middleware\Authenticate::class,
+        ],
+        'api' => [
+            //
+        ]
+    ];
 ];
 ```
 And update your route like:
@@ -2363,7 +2491,7 @@ And update your route like:
 use Phaseolies\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', [ProfileController::class,'index'])->middleware('auth');
+Route::get('profile', [ProfileController::class,'index'])->middleware('auth');
 ```
 
 The `ProfileController` `index` method is now protected by the auth middleware. Update your middleware configuration to ensure authentication is required before accessing this method.
@@ -2576,9 +2704,8 @@ Now this command will create a invokable controller for you. For invokable contr
 ```php
 Route::get('/invoke_me', ProductController::class);
 ```
-Now `ProductController` __invoke method automatically will be injected by Doppar container. But remember
-> **⚠️ Warning:** Constructor dependency injection won't work for __invokable controllers
->
+Now `ProductController` __invoke method automatically will be injected by Doppar container.
+
 <a name="section-20"></a>
 
 ## Request
@@ -2605,6 +2732,8 @@ These methods are used to access data submitted through HTML forms (e.g., POST, 
     * `$request->only(['name', 'age'])`: Retrieves only "name" and "age" fields.
 * **Checking Field Existence:**
     * `$request->has('name')`: Returns `true` if the "name" field exists, `false` otherwise.
+    * `$request->isEmpty()`: Returns false if no requested data found
+    * `$request->is('/user/*')`: This checks if the current request path matches the pattern '/user/*'. The asterisk * is a wildcard, so it will match any URL path that starts with `/user/`, such as: `user/settings/account` or `user/profile`
 * **Accessing Validation Results:**
     * `$request->passed()`: Retrieves data that passed validation (if applied).
     * `$request->failed()`: Retrieves data that failed validation (if applied).
@@ -2624,7 +2753,7 @@ These methods provide access to server-related request information.
     * `$request->referer()`: Retrieves the referer URL (where the request came from).
 * **Headers:**
     * `$request->headers()`: Retrieves all request headers as an array.
-    * `$request->header('key')`: Retrieves the value of a specific header by key.
+    * `$request->header('key')`: Retrieve the value of a specific header by key.
     * `$request->headers->get('host')`: Retrieves the value of a specific header by key.
     * `$request->headers->set('key','value')`: Set the value to the header.
 * **Request Details:**
@@ -2636,14 +2765,19 @@ These methods provide access to server-related request information.
     * `$request->contentLength()`: Retrieves the content length of the request body.
     * `$request->method()`: Retrieves the HTTP method used (e.g., GET, POST).
     * `$request->query()`: Retrieves all query parameters (GET data).
-    * `$request->url()`: Retrieves the full URL of the request.
+    * `$request->query('key')`: Retrieve the value of a specific query param by key.
+    * `$request->getQueryString()`: Retrieves all query parameters as like `name=mahedi&school=academy` format.
+    * `$request->url()`: Retrieves the full URL of the request except query string.
+    * `$request->fullUrl()`: Retrieves the full URL of the request with query string.
     * `$request->host()`: Retrieves the host name (e.g., "example.com").
     * `$request->server()`: Retrieves all server variables as an array.
     * `$request->server->get('key')`: Get the server- by key name
     * `$request->uri()`: Retrieves the request URI (e.g., "/path/to/resource").
+    * `$request->merge(['key' => 'value'])`: This will add 'key' => 'value' to the request, or overwrite it if 'key' already exists.
 * **Cookies:**
     * `$request->cookie()`: Retrieves all cookies sent with the request.
     * `$request->cookies->get('key')`: Get the cookie by key name
+    * `$request->hasCookie('key')`: Check cookie existance
 
 #### Authentication
 
@@ -3088,18 +3222,18 @@ return session('name', 'default');
 
 You can check a key exists or not in a session data by doing this
 ```php
-if($rquest->session()->has('name')){
+if($request->session()->has('name')){
     // Session key data exists
 }
 ```
 
 You can destroy specific key session data by doing this
 ```php
-$rquest->session()->forget('key')
+$request->session()->forget('key')
 ```
 You can clear all session data by calling `flush()` function
 ```php
-$rquest->session()->flush();
+$request->session()->flush();
 ```
 
 Even you can destroy session using `destroy` function
@@ -3109,13 +3243,13 @@ $request->session()->destroy()
 ### Set and Get Session ID
 You can set seesion id and get is also. 
 ```php
-$rquest->session()->setId($id);
-$rquest->session()->getId()
+$request->session()->setId($id);
+$request->session()->getId()
 ```
 
 If you want to show all the session data from your application, call `all()` method like
 ```php
-$rquest->session()->all()
+$request->session()->all()
 ```
 ### Session Facades
 You can also handle session data using `Session` facades.
@@ -3224,9 +3358,6 @@ We can very easily get our stored cookie data using `get` function.
 Cookie::get('user_token');
 
 cookie()->get('user_token');
-
-
-Cookie::retrieve('non_existent', 'default_value'); // with default value
 ```
 
 ### Check Cookie Existence
@@ -4854,12 +4985,12 @@ Doppar's filesystem configuration file is located at `config/filesystems.php`. W
 You may configure as many disks as you like and may even have multiple disks that use the same driver. But if you change any of your configuration, and that is not wokring, please clean the application configuration by running the command `config:clear`.
 
 ## The Local Driver
-When using the local driver, all file operations are relative to the root directory defined in your filesystems configuration file. By default, this value is set to the `storage/app/` directory. Therefore, the following method would write to `storage/app/example.txt`.
+When using the local driver, all file operations are relative to the root directory defined in your filesystems configuration file. By default, this value is set to the `storage/app/profile` directory. Therefore, the following method would write to `storage/app/profile/example.txt`.
 
 ```php
 use Phaseolies\Support\Facades\Storage;
 
-Storage::disk('local')->store($request->file('file'));
+Storage::disk('local')->store('profile', $request->file('file'));
 ```
 
 ## The Public Disk
@@ -4930,11 +5061,7 @@ You can upload file any of your application folder. Doppar allows it also. To up
 $request->file('file')->store('product');
 ```
 
-Now your file will be stored in profuct directory inside storage folder. You can also use the `storeAs` method by passing your custom file name. 
-```php
-$request->file('file')->storeAs('product-cart', 'my_customize_file_name');
-```
-Now your file will be stored in `product-cart` directory with the name of `my_customize_file_name`. You can also pass callback with `storeAs` method like
+Now your file will be stored in profuct directory inside storage folder. You can also use the `storeAs` method by passing your custom file name. You can pass a callback with `storeAs` method like
 ```php
 $admin = 0;
 $request->file('file')->storeAs(function ($file) use ($admin) {
@@ -4943,6 +5070,7 @@ $request->file('file')->storeAs(function ($file) use ($admin) {
     }
 }, 'product-cart', 'file_name');
 ```
+
 You can also use `move` method to upload your file.
 ```php
 $file = $request->file('invoice');
@@ -5947,7 +6075,7 @@ composer require doppar/flarion
 ### Publish Configuration
 Now we need to publish the configuration files by running this pool command
 ```bash
-php pool vendor:publish --provider="Phaseolies\Flarion\FlarionServiceProvider"
+php pool vendor:publish --provider="Doppar\Flarion\FlarionServiceProvider"
 ```
 
 Now run migrate command to migrate `personal_access_token` table
@@ -5960,7 +6088,7 @@ Next, register the Flarion service provider so that Doppar can initialize it pro
 ```
 'providers' => [
     // Other service providers...
-    Flarion\FlarionServiceProvider::class,
+    \Doppar\Flarion\FlarionServiceProvider::class,
 ],
 ```
 This step ensures that Doppar knows about Flarion and can load its functionality when the application boots.
@@ -6034,15 +6162,16 @@ To ensure that all incoming API requests are authenticated, you should apply the
 
 Flarion handles stateless authentication using API tokens, so every request must include a valid token in the Authorization header. This makes it perfect for mobile apps, external clients, or any token-driven access.
 
-First register the flarion middleware inside your `App\Http\Kernel.php` file.
+First register the flarion middleware inside your `App\Http\Kernel.php` file inside `api` array.
 ```php
 public array $routeMiddleware = [
-    'auth-api' => \Doppar\Flarion\Http\Middleware\AuthenticateApi::class,
+    'api' => [
+        'auth-api' => \Doppar\Flarion\Http\Middleware\AuthenticateApi::class,
+    ]
 ];
 ```
 
 Now you can use `auth-api` middleware to protect your route.
-
 
 ```php
 use Phaseolies\Http\Request;
