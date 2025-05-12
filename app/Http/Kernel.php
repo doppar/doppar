@@ -38,7 +38,7 @@ class Kernel extends Middleware
         'web' => [
             'auth' => \App\Http\Middleware\Authenticate::class,
             'guest' => \App\Http\Middleware\GuestMiddleware::class,
-            'throttle' => \Phaseolies\Middleware\ThrottleRequests::class,
+            'throttle' => \Phaseolies\Middleware\ThrottleRequests::class
         ],
         'api' => [
             'throttle' => \Phaseolies\Middleware\ThrottleRequests::class,

@@ -77,16 +77,16 @@
         },
         {
             "name": "doppar/framework",
-            "version": "v2.0.4",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doppar/framework.git",
-                "reference": "28336e4ad4e606f4f3602a6cef0ce4575e585d9d"
+                "reference": "99889e9178525f01afccecc87d14bb68adf70c68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doppar/framework/zipball/28336e4ad4e606f4f3602a6cef0ce4575e585d9d",
-                "reference": "28336e4ad4e606f4f3602a6cef0ce4575e585d9d",
+                "url": "https://api.github.com/repos/doppar/framework/zipball/99889e9178525f01afccecc87d14bb68adf70c68",
+                "reference": "99889e9178525f01afccecc87d14bb68adf70c68",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +137,7 @@
                 "issues": "https://github.com/doppar/doppar/issues",
                 "source": "https://github.com/doppar/doppar"
             },
-            "time": "2025-05-08T12:00:22+00:00"
+            "time": "2025-05-12T19:11:47+00:00"
         },
         {
             "name": "graham-campbell/result-type",
