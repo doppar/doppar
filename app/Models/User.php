@@ -7,35 +7,35 @@ use Phaseolies\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Primary Key
+     * The primary key associated with the table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Table Name
+     * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'users';
 
     /**
-     * Creatable Attributes
+     * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $creatable = ['name', 'email', 'password', 'remember_token'];
 
     /**
-     * Unexposable Attributes
+     * The attributes that should be hidden for arrays and JSON.
      *
      * @var array
      */
     protected $unexposable = ['password', 'remember_token'];
 
     /**
-     * Page Size
+     * Default page size for pagination
      *
      * @var int
      */
