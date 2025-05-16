@@ -1,12 +1,14 @@
-name: Issues
+name: Reusable - Handle Labeled Issues
 
 on:
-  issues:
-    types: [labeled]
+  workflow_call:
 
 permissions:
   issues: write
 
 jobs:
-  help-wanted:
-    uses: doppar/doppar/.github/workflows/issues.yml@main
+  handle-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print labeled issue info
+        run: echo "This issue was labeled. Running reusable workflow from doppar/doppar."
