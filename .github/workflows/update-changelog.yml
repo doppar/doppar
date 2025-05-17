@@ -10,4 +10,4 @@ jobs:
   update:
     permissions:
       contents: write
-    uses: doppar/.github/.github/workflows/update-changelog.yml@main
+    uses: doppar/.github/.github/workflows/update-changelog.yml@master

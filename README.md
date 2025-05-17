@@ -5,13 +5,13 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/doppar/framework/actions/workflows/tests.yml"><img src="https://github.com/doppar/framework/actions/workflows/tests.yml/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/doppar/framework"><img src="https://img.shields.io/packagist/dt/doppar/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/doppar/framework"><img src="https://img.shields.io/packagist/v/doppar/framework" alt="Latest Stable Version"></a>
+<a href="https://github.com/doppar/doppar/actions/workflows/tests.yml"><img src="https://github.com/doppar/doppar/actions/workflows/tests.yml/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/doppar/doppar"><img src="https://img.shields.io/packagist/dt/doppar/doppar" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/doppar/doppar"><img src="https://img.shields.io/packagist/v/doppar/doppar" alt="Latest Stable Version"></a>
 <a href="https://github.com/doppar/framework/blob/main/LICENSE"><img src="https://img.shields.io/github/license/doppar/framework" alt="License"></a>
 </p>
 
-****Doppar**** is a modern, lightweight PHP framework built to revolutionize the way developers create ****robust, scalable, and efficient**** web applications. Tailored specifically for ****small, feature-based applications****, Doppar gives you the tools and structure you need—without the overhead.
+Doppar is a sleek, next-gen PHP framework crafted to transform web development—combining elegant, intuitive syntax with powerful performance to build scalable, efficient applications effortlessly.
 
 Whether you're a seasoned PHP developer or just diving in, Doppar makes it easy to build powerful applications quickly and cleanly.
 

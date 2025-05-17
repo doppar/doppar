@@ -9,4 +9,4 @@ permissions:
 
 jobs:
   help-wanted:
-    uses: doppar/.github/.github/workflows/issues.yml@main
+    uses: doppar/.github/.github/workflows/issues.yml@master

@@ -77,16 +77,16 @@
         },
         {
             "name": "doppar/framework",
-            "version": "v2.0.7",
+            "version": "v2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doppar/framework.git",
-                "reference": "0606927e5861058c26e61962162d1a690c55b959"
+                "reference": "0d8494e501a4ce7fd231f52b829e8580d6a2c177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doppar/framework/zipball/0606927e5861058c26e61962162d1a690c55b959",
-                "reference": "0606927e5861058c26e61962162d1a690c55b959",
+                "url": "https://api.github.com/repos/doppar/framework/zipball/0d8494e501a4ce7fd231f52b829e8580d6a2c177",
+                "reference": "0d8494e501a4ce7fd231f52b829e8580d6a2c177",
                 "shasum": ""
             },
             "require": {
@@ -104,7 +104,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.6",
-                "phpunit/phpunit": "^11.5.3"
+                "phpunit/phpunit": "^12.1.5"
             },
             "suggest": {
                 "ext-pdo": "Required to use all database features."
@@ -137,7 +137,7 @@
                 "issues": "https://github.com/doppar/doppar/issues",
                 "source": "https://github.com/doppar/doppar"
             },
-            "time": "2025-05-16T20:35:10+00:00"
+            "time": "2025-05-17T15:38:13+00:00"
         },
         {
             "name": "graham-campbell/result-type",
