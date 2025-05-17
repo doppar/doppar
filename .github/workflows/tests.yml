@@ -44,7 +44,7 @@ jobs:
         run: rm -f LICENSE.md
 
       - name: Generate app key
-        run: php artisan key:generate
+        run: php pool key:generate
 
       - name: Execute tests
         run: vendor/bin/phpunit
