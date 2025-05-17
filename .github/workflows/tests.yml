@@ -27,11 +27,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo
+          coverage: none
+
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
       - name: Copy environment file
         run: cp .env.example .env
 
+      - name: Delete license file
+        run: rm -f LICENSE.md
+
       - name: Generate app key
-        run: php pool key:generate
+        run: php artisan key:generate
+
+      - name: Execute tests
+        run: vendor/bin/phpunit

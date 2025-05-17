@@ -9,4 +9,4 @@ permissions:
 
 jobs:
   uneditable:
-    uses: doppar/doppar/.github/workflows/pull-requests.yml@main
+    uses: doppar/.github/.github/workflows/pull-requests.yml@main
