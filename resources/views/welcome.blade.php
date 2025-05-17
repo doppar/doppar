@@ -12,7 +12,7 @@
                 <div>
                     <a href="https://github.com/doppar/doppar" class="btn btn-light"
                         style="padding: 10px 20px; margin: 5px;">Github</a>
-                    <a href="https://github.com/doppar/doppar" class="btn btn-light"
+                    <a href="https://doppar.com" class="btn btn-light"
                         style="padding: 10px 20px; margin: 5px;">Documentation</a>
                 </div>
             </div>
