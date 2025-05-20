@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f047fc7a42a67ea4fb9885affc6e41f0",
+    "content-hash": "f0f153dab361dc0edc35bc75357209a1",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -77,16 +77,16 @@
         },
         {
             "name": "doppar/framework",
-            "version": "v2.1.3",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doppar/framework.git",
-                "reference": "df665e8758b964906baa20a0ff0c4adbaf6d176e"
+                "reference": "1a564925a214f088f36043c9b32f2df45fc7ffcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doppar/framework/zipball/df665e8758b964906baa20a0ff0c4adbaf6d176e",
-                "reference": "df665e8758b964906baa20a0ff0c4adbaf6d176e",
+                "url": "https://api.github.com/repos/doppar/framework/zipball/1a564925a214f088f36043c9b32f2df45fc7ffcd",
+                "reference": "1a564925a214f088f36043c9b32f2df45fc7ffcd",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +137,7 @@
                 "issues": "https://github.com/doppar/doppar/issues",
                 "source": "https://github.com/doppar/doppar"
             },
-            "time": "2025-05-20T09:15:25+00:00"
+            "time": "2025-05-20T19:03:19+00:00"
         },
         {
             "name": "graham-campbell/result-type",
