@@ -50,7 +50,7 @@ return [
     |
     */
 
-    'cookie' => env('SESSION_COOKIE', strtolower(env('APP_NAME')) . '_session'),
+    'cookie' => env('SESSION_COOKIE', strtolower(env('APP_NAME', 'cookie_')) . '_session'),
 
     /*
     |--------------------------------------------------------------------------

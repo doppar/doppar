@@ -110,4 +110,39 @@ return [
     'providers' => [
         App\Providers\AppServiceProvider::class,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Class Aliases
+    |--------------------------------------------------------------------------
+    |
+    | This array of class aliases allows you to use Doppar's facade classes
+    | with simple, memorable names instead of full namespace paths. Aliases
+    | provide convenient static interfaces to key application services.
+    |
+    | Why Doppar uses aliases:
+    | - Provides clean, expressive syntax throughout your application
+    | - Maintains consistency with common PHP framework conventions
+    | - Offers easy access to frequently used services
+    | - Abstracts complex instantiation logic behind simple static calls
+    |
+    */
+    'aliases' => [
+        'App' => \Phaseolies\Support\Facades\App::class,
+        'Auth' => \Phaseolies\Support\Facades\Auth::class,
+        'Abort' => \Phaseolies\Support\Facades\Abort::class,
+        'Config' => \Phaseolies\Support\Facades\Config::class,
+        'Crypt' => \Phaseolies\Support\Facades\Crypt::class,
+        'Mail' => \Phaseolies\Support\Facades\Mail::class,
+        'Redirect' => \Phaseolies\Support\Facades\Redirect::class,
+        'Response' => \Phaseolies\Support\Facades\Response::class,
+        'Route' => \Phaseolies\Support\Facades\Route::class,
+        'Session' => \Phaseolies\Support\Facades\Session::class,
+        'URL' => \Phaseolies\Support\Facades\URL::class,
+        'Storage' => \Phaseolies\Support\Facades\Storage::class,
+        'Cookie' => \Phaseolies\Support\Facades\Cookie::class,
+        'Cache' => \Phaseolies\Support\Facades\Cache::class,
+        'Schema' => \Phaseolies\Support\Facades\Schema::class,
+        'Request' => \Phaseolies\Http\Request::class,
+    ],
 ];

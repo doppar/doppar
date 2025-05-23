@@ -77,16 +77,16 @@
         },
         {
             "name": "doppar/framework",
-            "version": "v2.2.1",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doppar/framework.git",
-                "reference": "16676d69e8c8923320e01523d0b98b010291f9a3"
+                "reference": "5826d88adc700a155ea361d1b02513011bdfa170"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doppar/framework/zipball/16676d69e8c8923320e01523d0b98b010291f9a3",
-                "reference": "16676d69e8c8923320e01523d0b98b010291f9a3",
+                "url": "https://api.github.com/repos/doppar/framework/zipball/5826d88adc700a155ea361d1b02513011bdfa170",
+                "reference": "5826d88adc700a155ea361d1b02513011bdfa170",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +137,7 @@
                 "issues": "https://github.com/doppar/doppar/issues",
                 "source": "https://github.com/doppar/doppar"
             },
-            "time": "2025-05-22T12:56:05+00:00"
+            "time": "2025-05-23T18:53:32+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2860,16 +2860,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "12.2.1",
+            "version": "12.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "448f2c504d86dbff3949dcd02c95aa85db2c7617"
+                "reference": "9075a8efc66e11bc55c319062e147bdb06777267"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/448f2c504d86dbff3949dcd02c95aa85db2c7617",
-                "reference": "448f2c504d86dbff3949dcd02c95aa85db2c7617",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/9075a8efc66e11bc55c319062e147bdb06777267",
+                "reference": "9075a8efc66e11bc55c319062e147bdb06777267",
                 "shasum": ""
             },
             "require": {
@@ -2896,7 +2896,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "12.2.x-dev"
+                    "dev-main": "12.3.x-dev"
                 }
             },
             "autoload": {
@@ -2925,7 +2925,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.2.1"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.3.0"
             },
             "funding": [
                 {
@@ -2945,7 +2945,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-04T05:25:05+00:00"
+            "time": "2025-05-23T15:49:03+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
