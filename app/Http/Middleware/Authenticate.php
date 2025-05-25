@@ -23,6 +23,23 @@ class Authenticate implements Middleware
             return $next($request);
         }
 
+        $this->setIntendedUrl($request);
+
         return redirect('/login');
+    }
+
+    /**
+     * Stores the current full URL in the session to allow redirection
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function setIntendedUrl(Request $request): void
+    {
+        if ($request->getMethod() === 'GET') {
+            // Save the full URL to the session under 'url.intended'
+            // for future redirection (e.g., after login)
+            $request->session()->put('url.intended', $request->fullUrl());
+        }
     }
 }
