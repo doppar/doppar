@@ -11,9 +11,6 @@ class Schedule
     /**
      * Register commands to be scheduled.
      *
-     * This method sets up multiple commands with various scheduling intervals
-     * and execution configurations (e.g., background execution, no overlap).
-     *
      * @param Schedule $schedule
      * @return void
      */

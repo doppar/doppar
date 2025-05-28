@@ -77,16 +77,16 @@
         },
         {
             "name": "doppar/framework",
-            "version": "v2.3.1",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doppar/framework.git",
-                "reference": "af6166e686aee81ecfe85ef2228f59be67f52bab"
+                "reference": "913c38e37c5a1c04e6b4dbc78ee85865677177ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doppar/framework/zipball/af6166e686aee81ecfe85ef2228f59be67f52bab",
-                "reference": "af6166e686aee81ecfe85ef2228f59be67f52bab",
+                "url": "https://api.github.com/repos/doppar/framework/zipball/913c38e37c5a1c04e6b4dbc78ee85865677177ed",
+                "reference": "913c38e37c5a1c04e6b4dbc78ee85865677177ed",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "issues": "https://github.com/doppar/doppar/issues",
                 "source": "https://github.com/doppar/doppar"
             },
-            "time": "2025-05-28T09:57:59+00:00"
+            "time": "2025-05-28T10:11:01+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
