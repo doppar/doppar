@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^8.3",
-        "doppar/framework": "^2.2"
+        "doppar/framework": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -42,9 +42,6 @@
         ],
         "post-create-project-cmd": [
             "@php pool key:generate --ansi"
-        ],
-        "post-install-cmd": [
-            "rm -f LICENSE.md"
         ]
     },
     "config": {
