@@ -58,5 +58,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        // add another like
+        // public_path('avatars') => storage_path('app/avatars'),
     ],
 ];
