@@ -9,13 +9,13 @@ class Schedule
     use InteractsWithSchedule;
 
     /**
-     * Register commands to be scheduled.
+     * Register the application's scheduled commands.
      *
      * @param Schedule $schedule
      * @return void
      */
     public function schedule(Schedule $schedule): void
     {
-        //
+        //;
     }
 }

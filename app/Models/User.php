@@ -42,7 +42,7 @@ class User extends Model
     protected $pageSize = 10;
 
     /**
-     * Indicates whether the model should maintain timestamps (`created_at` and `updated_at` fields.).
+     * Indicates whether the model should maintain timestamps
      *
      * @var bool
      */
