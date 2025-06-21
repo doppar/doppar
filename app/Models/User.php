@@ -11,28 +11,28 @@ class User extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'id';
+    protected $primaryKey = "id";
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = "users";
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $creatable = ['name', 'email', 'password', 'remember_token'];
+    protected $creatable = ["name", "email", "password", "remember_token"];
 
     /**
      * The attributes that should be hidden for arrays and JSON.
      *
      * @var array
      */
-    protected $unexposable = ['password', 'remember_token'];
+    protected $unexposable = ["password", "remember_token"];
 
     /**
      * Default page size for pagination

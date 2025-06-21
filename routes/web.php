@@ -8,4 +8,4 @@
 
 use Phaseolies\Support\Facades\Route;
 
-Route::get('/', fn() => view('welcome'))->name('home');
+Route::get("/", fn() => view('welcome'))->name("home");

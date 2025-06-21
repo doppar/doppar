@@ -1,18 +1,17 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
     |
-    | This value sets the name of your application, which is used in system 
+    | This value sets the name of your application, which is used in system
     | notifications, UI elements, and logs where an application name is needed.
     |
     */
 
-    'name' => env('APP_NAME', 'Doppar'),
+    "name" => env("APP_NAME", "Doppar"),
 
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +24,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'local'),
+    "env" => env("APP_ENV", "local"),
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +37,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    "debug" => (bool) env("APP_DEBUG", false),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +50,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    "url" => env("APP_URL", "http://localhost"),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,36 +63,36 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    "timezone" => env("APP_TIMEZONE", "UTC"),
 
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |
-    | Specifies the default language/locale for the application, used by 
-    | translation and localization services. Set this to match the primary 
+    | Specifies the default language/locale for the application, used by
+    | translation and localization services. Set this to match the primary
     | language of your application.
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    "locale" => env("APP_LOCALE", "en"),
+    "fallback_locale" => env("APP_FALLBACK_LOCALE", "en"),
 
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
     |
-    | This key is used for encrypting sensitive data within the application. 
-    | It should be a randomly generated 32-character string. Do not expose 
+    | This key is used for encrypting sensitive data within the application.
+    | It should be a randomly generated 32-character string. Do not expose
     | this key publicly. Ensure it is set in the ".env" file.
     |
     */
 
-    'cipher' => 'AES-256-CBC',
+    "cipher" => "AES-256-CBC",
 
-    'key' => env('APP_KEY'),
+    "key" => env("APP_KEY"),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,8 +106,10 @@ return [
     | Additional providers may be added for specific user implemented features and for packages.
     |
     */
-    'providers' => [
+    "providers" => [
         App\Providers\AppServiceProvider::class,
+        \Doppar\Authorizer\GuardServiceProvider::class,
+        \Doppar\Threader\ThreaderServiceProvider::class,
     ],
 
     /*
@@ -127,22 +128,22 @@ return [
     | - Abstracts complex instantiation logic behind simple static calls
     |
     */
-    'aliases' => [
-        'App' => \Phaseolies\Support\Facades\App::class,
-        'Auth' => \Phaseolies\Support\Facades\Auth::class,
-        'Abort' => \Phaseolies\Support\Facades\Abort::class,
-        'Config' => \Phaseolies\Support\Facades\Config::class,
-        'Crypt' => \Phaseolies\Support\Facades\Crypt::class,
-        'Mail' => \Phaseolies\Support\Facades\Mail::class,
-        'Redirect' => \Phaseolies\Support\Facades\Redirect::class,
-        'Response' => \Phaseolies\Support\Facades\Response::class,
-        'Route' => \Phaseolies\Support\Facades\Route::class,
-        'Session' => \Phaseolies\Support\Facades\Session::class,
-        'URL' => \Phaseolies\Support\Facades\URL::class,
-        'Storage' => \Phaseolies\Support\Facades\Storage::class,
-        'Cookie' => \Phaseolies\Support\Facades\Cookie::class,
-        'Cache' => \Phaseolies\Support\Facades\Cache::class,
-        'Schema' => \Phaseolies\Support\Facades\Schema::class,
-        'Request' => \Phaseolies\Http\Request::class,
+    "aliases" => [
+        "App" => \Phaseolies\Support\Facades\App::class,
+        "Auth" => \Phaseolies\Support\Facades\Auth::class,
+        "Abort" => \Phaseolies\Support\Facades\Abort::class,
+        "Config" => \Phaseolies\Support\Facades\Config::class,
+        "Crypt" => \Phaseolies\Support\Facades\Crypt::class,
+        "Mail" => \Phaseolies\Support\Facades\Mail::class,
+        "Redirect" => \Phaseolies\Support\Facades\Redirect::class,
+        "Response" => \Phaseolies\Support\Facades\Response::class,
+        "Route" => \Phaseolies\Support\Facades\Route::class,
+        "Session" => \Phaseolies\Support\Facades\Session::class,
+        "URL" => \Phaseolies\Support\Facades\URL::class,
+        "Storage" => \Phaseolies\Support\Facades\Storage::class,
+        "Cookie" => \Phaseolies\Support\Facades\Cookie::class,
+        "Cache" => \Phaseolies\Support\Facades\Cache::class,
+        "Schema" => \Phaseolies\Support\Facades\Schema::class,
+        "Request" => \Phaseolies\Http\Request::class,
     ],
 ];
