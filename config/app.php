@@ -108,8 +108,6 @@ return [
     */
     "providers" => [
         App\Providers\AppServiceProvider::class,
-        \Doppar\Authorizer\GuardServiceProvider::class,
-        \Doppar\Threader\ThreaderServiceProvider::class,
     ],
 
     /*
