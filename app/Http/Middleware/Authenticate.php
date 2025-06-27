@@ -7,6 +7,7 @@ use Phaseolies\Middleware\Contracts\Middleware;
 use Phaseolies\Http\Response;
 use Phaseolies\Http\Request;
 use Closure;
+use Phaseolies\Http\Exceptions\HttpResponseException;
 
 class Authenticate implements Middleware
 {
@@ -21,6 +22,10 @@ class Authenticate implements Middleware
     {
         if (Auth::check()) {
             return $next($request);
+        }
+
+        if ($request->isAjax() || $request->wantsJson()) {
+            throw new HttpResponseException('Unauthenticated', 401);
         }
 
         $this->setIntendedUrl($request);
