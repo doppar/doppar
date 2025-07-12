@@ -127,14 +127,14 @@ return [
     |
     */
     "aliases" => [
-        "App" => \Phaseolies\Support\Facades\App::class,
+        "Application" => \Phaseolies\Application::class,
         "Auth" => \Phaseolies\Support\Facades\Auth::class,
         "Abort" => \Phaseolies\Support\Facades\Abort::class,
         "Config" => \Phaseolies\Support\Facades\Config::class,
         "Crypt" => \Phaseolies\Support\Facades\Crypt::class,
         "Mail" => \Phaseolies\Support\Facades\Mail::class,
         "Redirect" => \Phaseolies\Support\Facades\Redirect::class,
-        "Response" => \Phaseolies\Support\Facades\Response::class,
+        "Response" => \Phaseolies\Http\Response::class,
         "Route" => \Phaseolies\Support\Facades\Route::class,
         "Session" => \Phaseolies\Support\Facades\Session::class,
         "URL" => \Phaseolies\Support\Facades\URL::class,
