@@ -13,7 +13,7 @@
     <div class="container">
         <p class="welcome-message">{{ trans('messages.welcome', ['version' => 'v'. Application::VERSION]) }}</p>
         <div class="btn-group">
-            <a href="https://github.com/doppar/doppar" class="btn">GitHub</a>
+            <a href="https://github.com/doppar" class="btn">GitHub</a>
             <a href="https://doppar.com" class="btn">Documentation</a>
         </div>
         <div class="php-version">
