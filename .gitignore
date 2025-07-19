@@ -3,7 +3,6 @@
 /.idea
 /.vscode
 .env
-!.env.example
 /.phpunit.cache
 /vendor
 /package
