@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: doppar-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - database:/app/database
+      - storage:/app/storage
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_URL=http://localhost:8000
+      - DB_CONNECTION=sqlite
+      - DB_DATABASE=/app/database/database.sqlite
+
+volumes:
+  database:
+  storage:
