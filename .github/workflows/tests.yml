@@ -7,7 +7,7 @@ on:
       - '*.x'
   pull_request:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '*/30 * * * *'
 
 permissions:
   contents: read
@@ -35,7 +35,9 @@ jobs:
           coverage: none
 
       - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress
+        run: |
+          composer install --prefer-dist --no-interaction --no-progress
+          rm -rf test && composer create-project doppar/doppar test
 
       - name: Copy environment file
         run: cp .env.example .env

@@ -1,7 +1,9 @@
 <?php
 
 return [
+    'default' => 'The given data was invalid.',
     'required' => 'The :attribute field is required',
+    'exists_in' => 'The selected :attribute is invalid.',
     'email' => 'The :attribute must be a valid email address.',
     'min' => [
         'string' => 'The :attribute must be at least :min characters.',
@@ -31,7 +33,41 @@ return [
         ],
         'max' => 'The :attribute may not be greater than :max kilobytes.',
     ],
+    'alpha'       => 'The :attribute may only contain letters.',
+    'alpha_num'   => 'The :attribute may only contain letters and numbers.',
+    'alpha_dash'  => 'The :attribute may only contain letters, numbers, dashes, and underscores.',
+    'numeric'     => 'The :attribute must be a number.',
+    'url'         => 'The :attribute must be a valid URL.',
+    'ip'          => 'The :attribute must be a valid IP address.',
+    'ipv4'        => 'The :attribute must be a valid IPv4 address.',
+    'ipv6'        => 'The :attribute must be a valid IPv6 address.',
+    'json'        => 'The :attribute must be a valid JSON string.',
+    'boolean'     => 'The :attribute field must be true or false.',
+    'confirmed'   => 'The :attribute confirmation does not match.',
+    'different'   => 'The :attribute and :other must be different.',
+    'in'          => 'The selected :attribute is invalid. Allowed values: :values.',
+    'not_in'      => 'The selected :attribute is invalid.',
+    'regex'       => 'The :attribute format is invalid.',
+    'phone'       => 'The :attribute must be a valid phone number.',
+    'digits'      => 'The :attribute must be exactly :digits digits.',
+    'min_digits'  => 'The :attribute must have at least :min digits.',
+    'max_digits'  => 'The :attribute must not have more than :max digits.',
+    'size'        => 'The :attribute must be exactly :size characters.',
+    'starts_with' => 'The :attribute must start with ":value".',
+    'ends_with'   => 'The :attribute must end with ":value".',
+    'uuid'        => 'The :attribute must be a valid UUID.',
+    'date_format' => 'The :attribute does not match the format :format.',
+    'uppercase'   => 'The :attribute must be uppercase.',
+    'lowercase'   => 'The :attribute must be lowercase.',
+    'slug'        => 'The :attribute must be a valid slug (lowercase letters, numbers, and hyphens only).',
+    'string'      => 'The :attribute must be a string.',
+    'array'       => 'The :attribute must be an array.',
+    'timezone'    => 'The :attribute must be a valid timezone.',
     'rate_limit' => [
         'error' => 'Too Many Attempts. Please try again after :attribute seconds.',
-    ]
+        'message' => 'Your request could not be completed due to too many attempts',
+    ],
+    'unauthorized' => [
+        'message' => 'You are not authorized to perform this action.'
+    ],
 ];

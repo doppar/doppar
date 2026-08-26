@@ -16,6 +16,6 @@ class Schedule
      */
     public function schedule(Schedule $schedule): void
     {
-        //;
+        //
     }
 }

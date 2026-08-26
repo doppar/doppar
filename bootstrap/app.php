@@ -1,6 +1,8 @@
 <?php
 
 use Phaseolies\Application;
+use Phaseolies\Http\Request;
+use Phaseolies\Http\Response;
 
 $basePath = empty(env('APP_BASE_PATH')) ? dirname(__DIR__) : env('APP_BASE_PATH');
 
@@ -25,7 +27,14 @@ $app = new Application();
 | incoming requests and send responses back to the client.
 |
 */
-return $app
-    ->withBasePath($basePath)
-    ->configure($app)
+return $app->withBasePath(basePath: $basePath)
+    ->setRelaxablePaths(relaxablePaths: [
+        // The paths listed below will bypass CSRF token verification.
+        // '/webhook/payment' – bypasses only the '/webhook/payment' URI.
+        // '/webhook/*' – bypasses all URIs that start with '/webhook'.
+    ])
+    ->terminating(function (Request $request, ?Response $response, ?\Throwable $exception = null) {
+        // Runs after the response is sent, during application termination.
+    })
+    ->configure(app: $app)
     ->build();

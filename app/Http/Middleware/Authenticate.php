@@ -20,8 +20,10 @@ class Authenticate implements Middleware
      */
     public function __invoke(Request $request, Closure $next): Response
     {
-        if (Auth::check()) {
-            return $next($request);
+        foreach (config('auth.actors') as $actor => $_) {
+            if (Auth::actor($actor)->check()) {
+                return $next($request);
+            }
         }
 
         if ($request->isAjax() || $request->wantsJson()) {

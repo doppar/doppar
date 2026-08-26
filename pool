@@ -1,10 +1,39 @@
 #!/usr/bin/env php
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for this application. Include Composer's autoloader to automatically
+| load all required dependencies and libraries
+|
+*/
+
 require __DIR__ . '/vendor/autoload.php';
+
+/*
+|--------------------------------------------------------------------------
+| Bootstrap application services
+|--------------------------------------------------------------------------
+|
+| Bootstrap the application by loading the core application instance
+| This sets up the service container, configuration, and prepares the app for use
+|
+*/
 
 $app = require_once __DIR__ . '/bootstrap/app.php';
 
+// Retrieve the console from the application container
+// The console is responsible for handling CLI commands
 $console = $app->make('console');
 
-$console->run();
+// Execute the console application
+// This starts the command-line interface and processes any incoming commands
+$status = $console->run();
+
+// Terminate the script with the console application's exit code
+// This ensures the CLI returns the correct status
+exit($status);

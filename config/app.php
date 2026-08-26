@@ -67,6 +67,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Sensitive Input Exclusions
+    |--------------------------------------------------------------------------
+    |
+    | Define the list of sensitive input fields that should never be stored
+    | in the session. This helps protect sensitive data such as passwords
+    | from being exposed or persisted.
+    |
+    */
+    "exclude_sensitive_input" => [
+        'password',
+        '_insight_redirect_chain'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |
@@ -129,11 +144,9 @@ return [
     "aliases" => [
         "Application" => \Phaseolies\Application::class,
         "Auth" => \Phaseolies\Support\Facades\Auth::class,
-        "Abort" => \Phaseolies\Support\Facades\Abort::class,
         "Config" => \Phaseolies\Support\Facades\Config::class,
         "Crypt" => \Phaseolies\Support\Facades\Crypt::class,
         "Mail" => \Phaseolies\Support\Facades\Mail::class,
-        "Redirect" => \Phaseolies\Support\Facades\Redirect::class,
         "Response" => \Phaseolies\Http\Response::class,
         "Route" => \Phaseolies\Support\Facades\Route::class,
         "Session" => \Phaseolies\Support\Facades\Session::class,
@@ -141,7 +154,6 @@ return [
         "Storage" => \Phaseolies\Support\Facades\Storage::class,
         "Cookie" => \Phaseolies\Support\Facades\Cookie::class,
         "Cache" => \Phaseolies\Support\Facades\Cache::class,
-        "Schema" => \Phaseolies\Support\Facades\Schema::class,
         "Request" => \Phaseolies\Http\Request::class,
     ],
 ];

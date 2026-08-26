@@ -19,8 +19,10 @@ class GuestMiddleware implements Middleware
      */
     public function __invoke(Request $request, Closure $next): Response
     {
-        if (Auth::check()) {
-            return redirect('/home');
+        foreach (config('auth.actors') as $actor => $_) {
+            if (Auth::actor($actor)->check()) {
+                return redirect('/home');
+            }
         }
 
         return $next($request);

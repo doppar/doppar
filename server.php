@@ -4,7 +4,7 @@
  * Doppar - A PHP Framework
  *
  * @package Doppar
- * @author Mahedi Hasan <mahedi@doppar.com>
+ * @author Mahedi Hasan <mahedy150101@gmail.com>
  */
 
 $uri = urldecode(

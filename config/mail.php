@@ -7,11 +7,6 @@ return [
     | Default Mailer
     |--------------------------------------------------------------------------
     |
-    | This option controls the default mailer that is used to send all email
-    | messages unless another mailer is explicitly specified when sending
-    | the message. All additional mailers can be configured within the
-    | "mailers" array. Examples of each type of mailer are provided.
-    |
     */
 
     'default' => env('MAIL_MAILER', 'smtp'),
@@ -21,19 +16,21 @@ return [
     | Mailer Configurations
     |--------------------------------------------------------------------------
     |
-    | Here you may configure all of the mailers used by your application plus
-    | their respective settings. Several examples have been configured for
-    | you and you are free to add your own as your application requires.
+    | Here you may configure all of the mailers used by your application along with
+    | their respective settings. You are free to add your own mailers as needed.
     |
-    | Laravel supports a variety of mail "transport" drivers that can be used
-    | when delivering an email. You may specify which one you're using for
-    | your mailers below. You may also add additional mailers if needed.
+    | Supported mailer types correspond to PHPMailer’s sending methods:
+    |  - "smtp"     : Use an external SMTP server for sending emails (recommended for reliability and authentication).
+    |  - "sendmail" : Use the local sendmail program installed on the server (common on Linux).
+    |  - "qmail"    : Use the local qmail program if installed on the server.
+    |  - "mail"     : Use PHP's built-in mail() function (depends on server configuration, less reliable than SMTP).
     |
-    | Supported: "smtp"
+    | Choose the mailer type that best fits your server environment and needs.
     |
     */
 
     'mailers' => [
+
         'smtp' => [
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
@@ -44,7 +41,20 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
-        ]
+        ],
+
+        'sendmail' => [
+            'transport' => 'sendmail',
+            'sendmail_path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),
+        ],
+
+        'qmail' => [
+            'transport' => 'qmail',
+        ],
+
+        'mail' => [
+            'transport' => 'mail',
+        ],
     ],
 
     /*

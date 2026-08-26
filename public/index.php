@@ -26,7 +26,17 @@ require __DIR__ . '/../bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
-| Dispatch the Request and get the Response
+| Capture the incoming HTTP request, dispatch it through the application,
+| prepare and send the resolved response to the client, and return the
+| dispatch result instance for lifecycle termination handling.
 |--------------------------------------------------------------------------
 */
-$app->dispatch(Request::capture());
+$response = $app->dispatch(Request::capture());
+
+/*
+|--------------------------------------------------------------------------
+| Complete the request lifecycle by running the registered termination
+| callbacks after the response has already been sent.
+|--------------------------------------------------------------------------
+*/
+$response->terminate();
