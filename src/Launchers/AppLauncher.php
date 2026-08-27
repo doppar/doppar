@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Providers;
+namespace App\Launchers;
 
-use Phaseolies\Providers\ServiceProvider;
+use Phaseolies\Launchers\ServiceLauncher;
 
-class AppServiceProvider extends ServiceProvider
+class AppLauncher extends ServiceLauncher
 {
     /**
      * Register any application services.
@@ -17,11 +17,11 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Launch any application services.
      *
      * @return void
      */
-    public function boot(): void
+    public function launch(): void
     {
         //
     }
