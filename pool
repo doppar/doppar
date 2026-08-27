@@ -24,7 +24,7 @@ require __DIR__ . '/vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__ . '/bootstrap/app.php';
+$app = require_once __DIR__ . '/runtime/app.php';
 
 // Retrieve the console from the application container
 // The console is responsible for handling CLI commands

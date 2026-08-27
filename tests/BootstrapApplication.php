@@ -13,7 +13,7 @@ trait BootstrapApplication
      */
     public function buildApplication(): Application
     {
-        $app = require __DIR__ . '/../bootstrap/app.php';
+        $app = require __DIR__ . '/../runtime/app.php';
 
         return $app;
     }
