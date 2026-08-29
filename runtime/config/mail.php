@@ -7,6 +7,9 @@ return [
     | Default Mailer
     |--------------------------------------------------------------------------
     |
+    | The mailer used whenever a Mailable is sent without an explicit
+    | ->driver() override on the Mail facade. Must match a key below.
+    |
     */
 
     'default' => env('MAIL_MAILER', 'smtp'),
@@ -16,44 +19,48 @@ return [
     | Mailer Configurations
     |--------------------------------------------------------------------------
     |
-    | Here you may configure all of the mailers used by your application along with
-    | their respective settings. You are free to add your own mailers as needed.
+    | Doppar's mailer is Symfony Mailer under the hood, so every entry here
+    | ultimately resolves to a Symfony Transport DSN. You can either:
     |
-    | Supported mailer types correspond to PHPMailer’s sending methods:
-    |  - "smtp"     : Use an external SMTP server for sending emails (recommended for reliability and authentication).
-    |  - "sendmail" : Use the local sendmail program installed on the server (common on Linux).
-    |  - "qmail"    : Use the local qmail program if installed on the server.
-    |  - "mail"     : Use PHP's built-in mail() function (depends on server configuration, less reliable than SMTP).
+    |   1) Set 'dsn' directly to any scheme Symfony understands - smtp://,
+    |      smtps:// (implicit TLS), sendmail://, native://, null://, or a
+    |      bridge scheme once its package is installed (mailgun+api://,
+    |      ses+api://, postmark+api://, brevo+api://, sendgrid+api://, ...),
+    |      or
+    |   2) For an smtp-style mailer, leave 'dsn' empty and fill in host,
+    |      port, username, password, encryption and local_domain instead -
+    |      MailService assembles the DSN for you.
     |
-    | Choose the mailer type that best fits your server environment and needs.
+    | Symfony also understands compound DSNs for high availability, which
+    | you can use as a literal 'dsn' string:
+    |
+    |   'dsn' => 'failover(smtp://primary sendmail://default)'
+    |   'dsn' => 'roundrobin(smtp://one smtp://two)'
+    |
+    | Failover tries transports in order until one succeeds; round-robin load
+    | balances across them.
     |
     */
 
     'mailers' => [
 
         'smtp' => [
-            'transport' => 'smtp',
-            'url' => env('MAIL_URL'),
+            'dsn' => env('MAILER_DSN'),
             'host' => env('MAIL_HOST', '127.0.0.1'),
             'port' => env('MAIL_PORT', 2525),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+            'timeout' => env('MAIL_TIMEOUT'),
         ],
 
         'sendmail' => [
-            'transport' => 'sendmail',
-            'sendmail_path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),
+            'dsn' => env('MAIL_SENDMAIL_DSN', 'sendmail://default'),
         ],
 
-        'qmail' => [
-            'transport' => 'qmail',
-        ],
-
-        'mail' => [
-            'transport' => 'mail',
+        'null' => [
+            'dsn' => 'null://null',
         ],
     ],
 
@@ -71,5 +78,35 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Message Signing
+    |--------------------------------------------------------------------------
+    |
+    | Symfony Mime can sign every outgoing email with DKIM (RFC 6376) and/or
+    | wrap it as a signed S/MIME message. Both rely on PHP's openssl
+    | extension. Leave a signer disabled to skip it entirely - it is applied
+    | to every mailer above, right before the message is sent.
+    |
+    */
+
+    'signing' => [
+
+        'dkim' => [
+            'enabled' => env('MAIL_DKIM_ENABLED', false),
+            'private_key' => env('MAIL_DKIM_PRIVATE_KEY'), // PEM string, or a "file://..." path
+            'passphrase' => env('MAIL_DKIM_PASSPHRASE', ''),
+            'domain' => env('MAIL_DKIM_DOMAIN'),
+            'selector' => env('MAIL_DKIM_SELECTOR'),
+        ],
+
+        'smime' => [
+            'enabled' => env('MAIL_SMIME_ENABLED', false),
+            'certificate' => env('MAIL_SMIME_CERTIFICATE'), // path to a PEM certificate
+            'private_key' => env('MAIL_SMIME_PRIVATE_KEY'), // path to a PEM private key
+            'passphrase' => env('MAIL_SMIME_PASSPHRASE'),
+        ],
     ],
 ];
