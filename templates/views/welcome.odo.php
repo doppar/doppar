@@ -19,20 +19,20 @@
             <p>Craft Fast-Loading PHP Application</p>
         </section>
         <section class="grid">
-            <a href="https://doppar.com/versions/3.x/starter-kits" class="card">
+            <a href="https://doppar.com/versions/4.x/starter-kits" class="card">
                 <h3>Starter kits</h3>
                 <p>To give you a head start building your new Doppar application, we are happy to offer application
                     starter kits.</p>
             </a>
-            <a href="https://doppar.com/versions/3.x/architecture-concept" class="card">
+            <a href="https://doppar.com/versions/4.x/architecture-concept" class="card">
                 <h3>System Architecture</h3>
                 <p>Doppar follows the Model-View-Controller (MVC) architectural pattern, a widely accepted standard in web application development.</p>
             </a>
-            <a href="https://doppar.com/versions/3.x/routing" class="card">
+            <a href="https://doppar.com/versions/4.x/routing" class="card">
                 <h3>Routing</h3>
                 <p>With support for route prefix grouping, named routes, throttle route, middleware assignment, and RESTful resource routing, Doppar gives developers full control over how requests are handled.</p>
             </a>
-            <a href="https://doppar.com/versions/3.x/authentication" class="card">
+            <a href="https://doppar.com/versions/4.x/authentication" class="card">
                 <h3>Authentication</h3>
                 <p>Doppar simplifies this process by providing built-in tools and scaffolding to help you implement user authentication quickly and securely.</p>
             </a>
