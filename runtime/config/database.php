@@ -45,15 +45,10 @@ return [
                     return [];
                 }
 
-                if (defined('Pdo\Mysql::ATTR_SSL_CA')) {
-                    return [
-                        \Pdo\Mysql::ATTR_SSL_CA => $sslCa,
-                    ];
-                }
-
                 return [
-                    \PDO::MYSQL_ATTR_SSL_CA => $sslCa,
+                    \PDO\Mysql::ATTR_SSL_CA => $sslCa,
                 ];
+
             })() : [],
         ],
 

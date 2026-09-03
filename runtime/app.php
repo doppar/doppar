@@ -33,7 +33,7 @@ return $app->withBasePath(basePath: $basePath)
         // '/webhook/payment' – bypasses only the '/webhook/payment' URI.
         // '/webhook/*' – bypasses all URIs that start with '/webhook'.
     ])
-    ->terminating(function (Request $request, ?Response $response, ?\Throwable $exception = null) {
+    ->terminating(function (Request $request, ?Response $response, ?Throwable $exception = null) {
         // Runs after the response is sent, during application termination.
     })
     ->configure(app: $app)

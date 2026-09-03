@@ -10,10 +10,10 @@ class BeforeExceptionHandler implements ErrorHandlerInterface
     /**
      * Handle logic to be executed before the application processes an exception
      *
-     * @param Throwable $throwable
+     * @param Throwable $exception
      * @return void
      */
-    public function handle(Throwable $throwable): void
+    public function handle(Throwable $exception): void
     {
         //
     }

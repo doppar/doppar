@@ -2,8 +2,20 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Phaseolies\Database\Entity\Model;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string|null $remember_token
+ * @property string|null $two_factor_secret
+ * @property string|null $two_factor_recovery_codes
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class User extends Model
 {
     /**

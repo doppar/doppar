@@ -22,7 +22,7 @@ class Kernel extends Middleware
      *
      * @var array<string, array<int, class-string|string>>
      */
-    public $middlewareGroups = [
+    public array $middlewareGroups = [
         'web' => [
             \Phaseolies\Middleware\CsrfTokenMiddleware::class,
         ],
