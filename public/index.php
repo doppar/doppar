@@ -22,7 +22,7 @@ require __DIR__ . '/../vendor/autoload.php';
 | Bootstrap application services
 |--------------------------------------------------------------------------
 */
-require __DIR__ . '/../bootstrap/app.php';
+require __DIR__ . '/../runtime/app.php';
 
 /*
 |--------------------------------------------------------------------------

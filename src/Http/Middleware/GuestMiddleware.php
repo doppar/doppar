@@ -15,7 +15,7 @@ class GuestMiddleware implements Middleware
      *
      * @param Request $request
      * @param \Closure(\Phaseolies\Http\Request) $next
-     * @return Phaseolies\Http\Response
+     * @return \Phaseolies\Http\Response
      */
     public function __invoke(Request $request, Closure $next): Response
     {
