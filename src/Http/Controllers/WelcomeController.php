@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Phaseolies\Http\Response;
 use Phaseolies\Support\Router\Attributes\Route;
+use App\Http\Controllers\Controller;
 
 class WelcomeController extends Controller
 {
