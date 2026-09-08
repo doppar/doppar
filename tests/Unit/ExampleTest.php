@@ -7,10 +7,10 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * Test that false is false.
+     * Test that Doppar version is greater than or equal to 3.0.0.
      */
-    public function testThatFalseIsFalse(): void
+    public function testDopparVersion(): void
     {
-        $this->assertFalse(false);
+        $this->assertGreaterThanOrEqual('3.0.0', \Phaseolies\Application::VERSION);
     }
 }
