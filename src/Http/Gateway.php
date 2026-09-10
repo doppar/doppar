@@ -3,13 +3,12 @@
 namespace App\Http;
 
 use Phaseolies\Middleware\Middleware;
+use Phaseolies\Http\Contracts\GatewayInterface;
 
-class Kernel extends Middleware
+class Gateway extends Middleware implements GatewayInterface
 {
     /**
-     * The application's global HTTP middleware stack.
-     *
-     * These middleware are run during every request to your application.
+     * Middleware runs on every request, ahead of any group or route-specific middleware.
      *
      * @var array
      */
@@ -18,7 +17,7 @@ class Kernel extends Middleware
     ];
 
     /**
-     * The application's route middleware groups.
+     * Middleware bundles applies based on request type "web" vs "api"
      *
      * @var array<string, array<int, class-string|string>>
      */
@@ -30,9 +29,7 @@ class Kernel extends Middleware
     ];
 
     /**
-     * The application's route specific middleware.
-     *
-     * These middleware may be assigned to groups or used individually.
+     * Named middleware aliases a route can request individually
      *
      * @var array
      */
@@ -48,4 +45,34 @@ class Kernel extends Middleware
             // 'throttle' => \Phaseolies\Middleware\ThrottleRequests::class,
         ]
     ];
+
+    /**
+     * Get the application's global HTTP middleware stack.
+     *
+     * @return array
+     */
+    public function getGlobalMiddleware(): array
+    {
+        return $this->middleware;
+    }
+
+    /**
+     * Get the application's route middleware groups.
+     *
+     * @return array<string, array<int, class-string|string>>
+     */
+    public function getMiddlewareGroups(): array
+    {
+        return $this->middlewareGroups;
+    }
+
+    /**
+     * Get the application's named route middleware aliases.
+     *
+     * @return array<string, array<string, class-string|string>>
+     */
+    public function getRouteMiddleware(): array
+    {
+        return $this->routeMiddleware;
+    }
 }
