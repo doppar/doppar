@@ -4,21 +4,19 @@ use Phaseolies\Application;
 use Phaseolies\Http\Request;
 use Phaseolies\Http\Response;
 
-$basePath = empty(env('APP_BASE_PATH')) ? dirname(__DIR__) : env('APP_BASE_PATH');
-
-define('BASE_PATH', $basePath);
-
 /*
 |--------------------------------------------------------------------------
 | Create, configure, and build the application instance.
 |--------------------------------------------------------------------------
 |
-| Create and configure the application instance, then return it. The Application
-| initializes the framework environment, core launchers, and application gateway.
+| Create and configure the application instance, then return it. The
+| Application takes the base path directly in its constructor — it's
+| the single source of truth for it from that point on, no global
+| constant required — and initializes the framework environment, core
+| launchers, and application gateway.
 |
 | The configuration chain then:
 |
-| - Sets the application's base path.
 | - Defines paths that should bypass CSRF verification.
 | - Registers a callback to run during application termination.
 | - Configures the application and its middleware pipeline.
@@ -28,8 +26,8 @@ define('BASE_PATH', $basePath);
 | configuration, while route-specific middleware is resolved later
 | when a route is dispatched.
 */
-return ($app = new Application())
-    ->withBasePath(basePath: $basePath)
+
+return ($app = new Application(dirname(__DIR__)))
     ->setRelaxablePaths(relaxablePaths: [
         // The paths listed below will bypass CSRF token verification.
         // '/webhook/payment' – bypasses only the '/webhook/payment' URI.
