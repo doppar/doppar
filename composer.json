@@ -36,7 +36,7 @@
     "scripts": {
         "setup": [
             "composer install",
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php -r \"file_exists('env.toml') || copy('env.toml.example', 'env.toml');\"",
             "@php pool key:generate",
             "@php pool migrate"
         ],
@@ -55,7 +55,7 @@
             "@php pool frontend:install --force"
         ],
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('env.toml') || copy('env.toml.example', 'env.toml');\""
         ]
     },
     "config": {

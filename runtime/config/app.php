@@ -20,7 +20,7 @@ return [
     |
     | Defines the current environment of the application (e.g., "local",
     | "production", "staging"). This setting affects configurations such as
-    | logging and error handling. It should be set in the ".env" file.
+    | logging and error handling. It should be set in the "env.toml" file.
     |
     */
 
@@ -37,7 +37,7 @@ return [
     |
     */
 
-    "debug" => (bool) env("APP_DEBUG", false),
+    "debug" => env("APP_DEBUG", false),
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +101,7 @@ return [
     |
     | This key is used for encrypting sensitive data within the application.
     | It should be a randomly generated 32-character string. Do not expose
-    | this key publicly. Ensure it is set in the ".env" file.
+    | this key publicly. Ensure it is set in the "env.toml" file.
     |
     */
 
