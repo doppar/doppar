@@ -7,7 +7,7 @@
 |
 | This configuration file defines the database connection settings for the
 | application. It supports database connections MySQL, SQLite and PostgreSQL. Database credentials and settings are primarily
-| loaded from the ".env" file to maintain security and flexibility.
+| loaded from the "env.toml" file to maintain security and flexibility.
 |
 | Supported Drivers: mysql, sqlite, pgsql
 |
