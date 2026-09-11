@@ -4,36 +4,36 @@ use Phaseolies\Application;
 use Phaseolies\Http\Request;
 use Phaseolies\Http\Response;
 
-$basePath = empty(env('APP_BASE_PATH')) ? dirname(__DIR__) : env('APP_BASE_PATH');
-
-define('BASE_PATH', $basePath);
-
 /*
 |--------------------------------------------------------------------------
-| Create The Application
+| Create, configure, and build the application instance.
 |--------------------------------------------------------------------------
 |
-| Here we create the application instance.
+| Create and configure the application instance, then return it. The
+| Application takes the base path directly in its constructor — it's
+| the single source of truth for it from that point on, no global
+| constant required — and initializes the framework environment, core
+| launchers, and application gateway.
 |
+| The configuration chain then:
+|
+| - Defines paths that should bypass CSRF verification.
+| - Registers a callback to run during application termination.
+| - Configures the application and its middleware pipeline.
+| - Builds the final application instance.
+|
+| Global and middleware-group middleware are processed during application
+| configuration, while route-specific middleware is resolved later
+| when a route is dispatched.
 */
-$app = new Application();
 
-/*
-|--------------------------------------------------------------------------
-| Return The Application
-|--------------------------------------------------------------------------
-|
-| Finally, we return the application instance. This will be used to handle
-| incoming requests and send responses back to the client.
-|
-*/
-return $app->withBasePath(basePath: $basePath)
+return ($app = new Application(dirname(__DIR__)))
     ->setRelaxablePaths(relaxablePaths: [
         // The paths listed below will bypass CSRF token verification.
         // '/webhook/payment' – bypasses only the '/webhook/payment' URI.
         // '/webhook/*' – bypasses all URIs that start with '/webhook'.
     ])
-    ->terminating(function (Request $request, ?Response $response, ?Throwable $exception = null) {
+    ->terminating(function (Request $request, ?Response $response, ?\Throwable $exception = null) {
         // Runs after the response is sent, during application termination.
     })
     ->configure(app: $app)
