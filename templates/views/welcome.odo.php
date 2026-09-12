@@ -217,9 +217,19 @@
 
         .meta {
             margin-top: 30px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
             font-family: var(--mono);
             font-size: 12px;
             color: #9ca3af;
+        }
+
+        .meta img {
+            height: 14px;
+            width: auto;
+            margin-right: 6px;
         }
 
         .meta a {
@@ -266,10 +276,6 @@
 
 <body>
     <div class="wrap">
-        <div class="brand">
-            <img src="[[ enqueue('logo.png') ]]" alt="Doppar" />
-            <span>Doppar</span>
-        </div>
 
         <div class="card">
             <div class="left">
@@ -298,8 +304,9 @@
                 <a href="https://www.youtube.com/@doppar-3x" class="cta">Learn</a>
 
                 <div class="meta">
+                    <img src="[[ enqueue('logo.png') ]]" alt="Doppar" />
                     v[[ Application::VERSION ]] &middot; PHP [[ phpversion() ]] &middot;
-                    <a href="https://doppar.com/versions/4.x/releases" target="_blank" rel="noopener">View release notes &#8599;</a>
+                    <a href="https://blog.doppar.com" target="_blank" rel="noopener">Doppar News &#8599;</a>
                 </div>
             </div>
 
