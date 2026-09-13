@@ -20,7 +20,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "schema/seeders/"
         }
     },
     "autoload-dev": {
