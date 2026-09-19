@@ -8,20 +8,20 @@ Doppar isn't one package pretending to be a framework. It's a core plus a set of
 
 | Package | What it does |
 |---|---|
-| [doppar/framework](https://github.com/doppar/framework) | The core: routing, HTTP, the container, the ORM, validation. Everything below builds on this. |
-| [doppar/queue](https://github.com/doppar/queue) | Database-backed background jobs with process-isolated timeouts — a stuck job gets killed, not left to hang the worker. |
-| [doppar/embeds](https://github.com/doppar/embeds) | Semantic search for your models. Locally-computed embeddings, no external API required. |
-| [doppar/guard](https://github.com/doppar/guard) | Authorization — gates and policies without wiring your own. |
-| [doppar/flarion](https://github.com/doppar/flarion) | API authentication. |
-| [doppar/oauthic](https://github.com/doppar/oauthic) | Social login (OAuth) as a first-party package, not a community patchwork. |
-| [doppar/orion](https://github.com/doppar/orion) | External process orchestration — run shell commands individually, in concurrency-limited pools, or piped into pipelines. |
-| [doppar/airbend](https://github.com/doppar/airbend) | Real-time broadcasting. |
-| [doppar/bloom](https://github.com/doppar/bloom) | Bloom filter implementations for probabilistic set membership testing. |
-| [doppar/axios](https://github.com/doppar/axios) | A modern HTTP client for outbound requests. |
-| [doppar/notifier](https://github.com/doppar/notifier) | Notification delivery across channels. |
-| [doppar/ai](https://github.com/doppar/ai) | AI integration, wired into the framework's own conventions. |
-| [doppar/insight](https://github.com/doppar/insight) | A profiling and debugging toolbar for local development. |
-| [doppar/twig-bridge](https://github.com/doppar/twig-bridge) | Twig templates, if you'd rather not use Doppar's own view engine. |
+| [Framework](https://github.com/doppar/framework) | The core: routing, HTTP, the container, the ORM, validation. Everything below builds on this. |
+| [Ai](https://github.com/doppar/ai) | AI integration, wired into the framework's own conventions. |
+| [Queue](https://github.com/doppar/queue) | Database-backed background jobs with process-isolated timeouts — a stuck job gets killed, not left to hang the worker. |
+| [Embeds](https://github.com/doppar/embeds) | Semantic search for your models. Locally-computed embeddings, no external API required. |
+| [Guard](https://github.com/doppar/guard) | Authorization — gates and policies without wiring your own. |
+| [Flarion](https://github.com/doppar/flarion) | API authentication. |
+| [Oauthic](https://github.com/doppar/oauthic) | Social login (OAuth) as a first-party package, not a community patchwork. |
+| [Orion](https://github.com/doppar/orion) | External process orchestration — run shell commands individually, in concurrency-limited pools, or piped into pipelines. |
+| [Airbend](https://github.com/doppar/airbend) | Real-time broadcasting. |
+| [Bloom](https://github.com/doppar/bloom) | Bloom filter implementations for probabilistic set membership testing. |
+| [Axios](https://github.com/doppar/axios) | A modern HTTP client for outbound requests. |
+| [Notifier](https://github.com/doppar/notifier) | Notification delivery across channels. |
+| [Insight](https://github.com/doppar/insight) | A profiling and debugging toolbar for local development. |
+| [Twig-bridge](https://github.com/doppar/twig-bridge) | Twig templates, if you'd rather not use Doppar's own view engine. |
 
 Every package here is versioned and released alongside the core. Add what your app needs; the rest stays out of your `composer.json`.
 
