@@ -1,5 +1,16 @@
 # Release Notes
 
+## 4.0.1 - 2026-09-19
+
+### What's Changed
+
+* Fix PHPUnit session driver to use supported file backend by [@xentixar](https://github.com/xentixar) in https://github.com/doppar/doppar/pull/58
+* update test version check to 4.0.0 by [@xentixar](https://github.com/xentixar) in https://github.com/doppar/doppar/pull/54
+* Update .gitignore to remove composer.lock and package-lock.json by [@xentixar](https://github.com/xentixar) in https://github.com/doppar/doppar/pull/59
+* Update .gitignore to include schema/database.sqlite by [@xentixar](https://github.com/xentixar) in https://github.com/doppar/doppar/pull/60
+
+**Full Changelog**: https://github.com/doppar/doppar/compare/4.0.0...4.0.1
+
 ## 4.0.0 - 2026-09-19
 
 Doppar 4.0 is a major release. It targets PHP 8.5 and Symfony 8.1, ships a new application skeleton, and hardens the framework's security surface. It also brings attribute-driven DTO validation, a redesigned error page, and `env.toml` configuration.
@@ -283,6 +294,7 @@ Better Maintainability: Centralized exclusion list for sensitive fields.
         'password',
         '_insight_redirect_chain'
 ],
+
 
 
 
