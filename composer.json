@@ -10,10 +10,10 @@
     ],
     "require": {
         "php": "^8.5",
-        "doppar/framework": "4.*"
+        "doppar/framework": "4.*",
+        "doppar/insight": "^4.0"
     },
     "require-dev": {
-        "doppar/insight": "^4.0",
         "fakerphp/faker": "^1.24",
         "mockery/mockery": "^1.6",
         "phpunit/phpunit": "^13.2"
