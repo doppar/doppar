@@ -123,6 +123,7 @@ return [
     */
     "launchers" => [
         App\Launchers\AppLauncher::class,
+        \Doppar\Insight\ProfilerLauncher::class,
     ],
 
     /*
