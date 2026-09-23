@@ -10,7 +10,8 @@
     ],
     "require": {
         "php": "^8.5",
-        "doppar/framework": "4.*"
+        "doppar/framework": "4.*",
+        "doppar/insight": "^4.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24",
