@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Phaseolies\Database\Entity\Model;
-use Phaseolies\Auth\Contracts\Authenticatable;
+use Phaseolies\Auth\Contracts\Authable;
 
 /**
  * @property int $id
@@ -17,7 +17,7 @@ use Phaseolies\Auth\Contracts\Authenticatable;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
-class User extends Model implements Authenticatable
+class User extends Model implements Authable
 {
     /**
      * The table associated with the model.
