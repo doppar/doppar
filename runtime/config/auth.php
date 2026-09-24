@@ -23,8 +23,8 @@ return [
     | Each actor requires two values:
     |
     |   model       — Entity model used to look up and authenticate users.
-    |                 Must implement Phaseolies\Auth\Contracts\Authable
-    |                 (e.g. User, Admin). Auth::login() accepts that contract,
+    |                 Must extend Phaseolies\Auth\Authable
+    |                 (e.g. User, Admin). Auth::login() accepts Authable,
     |                 not a single concrete class.
     |   session_key — Session key for the authenticated user's ID.
     |                 Must be unique across all defined actors.
@@ -32,7 +32,7 @@ return [
     | Example adding an admin actor:
     |
     |   'admin' => [
-    |       'model'       => App\Models\Admin::class, // implements Authable
+    |       'model'       => App\Models\Admin::class, // extends Authable
     |       'session_key' => 'admin_user',
     |   ],
     |
