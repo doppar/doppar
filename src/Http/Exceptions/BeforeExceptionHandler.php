@@ -2,7 +2,6 @@
 
 namespace App\Http\Exceptions;
 
-use Doppar\Insight\Support\ErrorHistoryRecorder;
 use Phaseolies\Error\Contracts\ErrorHandlerInterface;
 use Throwable;
 
@@ -16,7 +15,7 @@ class BeforeExceptionHandler implements ErrorHandlerInterface
      */
     public function handle(Throwable $exception): void
     {
-        app(ErrorHistoryRecorder::class)->record($exception);
+        //
     }
 
     /**

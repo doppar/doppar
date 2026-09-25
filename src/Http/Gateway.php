@@ -14,7 +14,6 @@ class Gateway extends Middleware implements GatewayInterface
      */
     public array $middleware = [
         // \App\Http\Middleware\TrustProxies::class,
-        \Doppar\Insight\Middleware\ProfilerMiddleware::class,
     ];
 
     /**
