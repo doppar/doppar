@@ -1,5 +1,18 @@
 # Release Notes
 
+## v4.1.0 - 2026-09-25
+
+### What's Changed
+
+* (feat) add insight package to skeleton by [@rrr63](https://github.com/rrr63) in https://github.com/doppar/doppar/pull/61
+* Implement Authable on User for multi-actor auth by [@sanzgrapher](https://github.com/sanzgrapher) in https://github.com/doppar/doppar/pull/62
+
+### New Contributors
+
+* [@sanzgrapher](https://github.com/sanzgrapher) made their first contribution in https://github.com/doppar/doppar/pull/62
+
+**Full Changelog**: https://github.com/doppar/doppar/compare/4.0.1...v4.1.0
+
 ## 4.0.1 - 2026-09-19
 
 ### What's Changed
@@ -294,6 +307,7 @@ Better Maintainability: Centralized exclusion list for sensitive fields.
         'password',
         '_insight_redirect_chain'
 ],
+
 
 
 
