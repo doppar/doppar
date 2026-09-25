@@ -22,14 +22,17 @@ return [
     |
     | Each actor requires two values:
     |
-    |   model       — The Entity model used to look up and authenticate users.
-    |   session_key — The session key under which the authenticated user's ID
-    |                 is stored. Must be unique across all defined actors.
+    |   model       — Entity model used to look up and authenticate users.
+    |                 Must extend Phaseolies\Auth\Authable
+    |                 (e.g. User, Admin). Auth::login() accepts Authable,
+    |                 not a single concrete class.
+    |   session_key — Session key for the authenticated user's ID.
+    |                 Must be unique across all defined actors.
     |
     | Example adding an admin actor:
     |
     |   'admin' => [
-    |       'model'       => App\Models\Admin::class,
+    |       'model'       => App\Models\Admin::class, // extends Authable
     |       'session_key' => 'admin_user',
     |   ],
     |
