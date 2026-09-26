@@ -1,5 +1,13 @@
 # Release Notes
 
+## v4.1.2 - 2026-09-26
+
+### What's Changed
+
+* Delete composer.lock by [@techmahedy](https://github.com/techmahedy) in https://github.com/doppar/doppar/pull/65
+
+**Full Changelog**: https://github.com/doppar/doppar/compare/v4.1.1...v4.1.2
+
 ## v4.1.1 - 2026-09-25
 
 ### What's Changed
@@ -316,6 +324,7 @@ Better Maintainability: Centralized exclusion list for sensitive fields.
         'password',
         '_insight_redirect_chain'
 ],
+
 
 
 
