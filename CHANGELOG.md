@@ -1,5 +1,14 @@
 # Release Notes
 
+## v4.1.1 - 2026-09-25
+
+### What's Changed
+
+* fix: added missing insight middleware by [@techmahedy](https://github.com/techmahedy) in https://github.com/doppar/doppar/pull/63
+* remove hardcoded insight profiler middleware code by [@techmahedy](https://github.com/techmahedy) in https://github.com/doppar/doppar/pull/64
+
+**Full Changelog**: https://github.com/doppar/doppar/compare/v4.1.0...v4.1.1
+
 ## v4.1.0 - 2026-09-25
 
 ### What's Changed
@@ -307,6 +316,7 @@ Better Maintainability: Centralized exclusion list for sensitive fields.
         'password',
         '_insight_redirect_chain'
 ],
+
 
 
 
