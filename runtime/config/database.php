@@ -38,18 +38,9 @@ return [
             'prefix' => env('DB_PREFIX', ''),
             'strict' => env('DB_STRICT_MODE', true),
             'engine' => env('DB_ENGINE', null),
-            'options' => extension_loaded('pdo_mysql') ? (function () {
-                $sslCa = env('MYSQL_ATTR_SSL_CA');
-
-                if (!$sslCa) {
-                    return [];
-                }
-
-                return [
-                    \PDO\Mysql::ATTR_SSL_CA => $sslCa,
-                ];
-
-            })() : [],
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                \Pdo\Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
 
         'pgsql' => [
