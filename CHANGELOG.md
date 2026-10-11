@@ -1,5 +1,13 @@
 # Release Notes
 
+## v4.1.3 - 2026-10-11
+
+### What's Changed
+
+* Drop pre-8.5 PDO MySQL constant fallbacks by [@techmahedy](https://github.com/techmahedy) in https://github.com/doppar/doppar/pull/66
+
+**Full Changelog**: https://github.com/doppar/doppar/compare/v4.1.2...v4.1.3
+
 ## v4.1.2 - 2026-09-26
 
 ### What's Changed
@@ -324,6 +332,7 @@ Better Maintainability: Centralized exclusion list for sensitive fields.
         'password',
         '_insight_redirect_chain'
 ],
+
 
 
 
