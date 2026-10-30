@@ -8,9 +8,9 @@ Doppar isn't one package pretending to be a framework. It's a core plus a set of
 
 | Package | What it does |
 |---|---|
-| [Framework](https://github.com/doppar/framework) | The core: routing, HTTP, the container, the ORM, validation. Everything below builds on this. |
 | [Ai](https://github.com/doppar/ai) | AI integration, wired into the framework's own conventions. |
 | [Queue](https://github.com/doppar/queue) | Database-backed background jobs with process-isolated timeouts — a stuck job gets killed, not left to hang the worker. |
+| [Ripple](https://github.com/doppar/ripple) | Build reactive interfaces in pure PHP. |
 | [Embeds](https://github.com/doppar/embeds) | Semantic search for your models. Locally-computed embeddings, no external API required. |
 | [Guard](https://github.com/doppar/guard) | Authorization — gates and policies without wiring your own. |
 | [Flarion](https://github.com/doppar/flarion) | API authentication. |
@@ -27,10 +27,12 @@ Every package here is versioned and released alongside the core. Add what your a
 
 ## Get started
 
-- **Documentation:** [doppar.com](https://doppar.com/versions/4.x/installation)
-- **What's new in 4.x:** [doppar.com/versions/4.x/releases](https://doppar.com/versions/4.x/releases)
-- **News and updates:** [blog.doppar.com](https://blog.doppar.com)
-- **Doppar tour:** [tour.doppar.com](https://tour.doppar.com)
+- **Documentation:** [Doppar](https://doppar.com/versions/4.x/installation)
+- **What's new in 4.x:** [Releases](https://doppar.com/versions/4.x/releases)
+- **AI:** [AI](https://ai.doppar.com)
+- **Ripple:** [Ripple](https://ripple.doppar.com)
+- **News and updates:** [Blog](https://blog.doppar.com)
+- **Doppar tour:** [Tour](https://tour.doppar.com)
 
 ## Contributing
 
