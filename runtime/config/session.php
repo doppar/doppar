@@ -9,7 +9,8 @@ return [
     |
     | Determines how session data is stored. The available options are:
     | - "file"   → Stores sessions in local files.
-    | - "cookie" → Stores session data in encrypted cookies.
+    | - "cookie" → Stores session data in encrypted cookies (max ~4KB).
+    | - "array"  → Keeps sessions in memory for the current process (testing).
     |
     */
 
@@ -113,4 +114,31 @@ return [
     */
 
     'same_site' => env('SESSION_SAME_SITE', 'lax'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Stateless Paths
+    |--------------------------------------------------------------------------
+    |
+    | Request paths that never get a stored session or a session cookie, such
+    | as API routes. The session still works in memory during the request, so
+    | code that touches it does not break. Use the StatelessSession middleware
+    | for single routes. Patterns may use "*" as a wildcard.
+    |
+    */
+
+    'stateless' => ['api/*'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Garbage Collection Lottery
+    |--------------------------------------------------------------------------
+    |
+    | Chances out of a total that a request also removes a slice of the expired
+    | sessions. Each sweep is bounded, so its cost does not grow with the number
+    | of stored sessions. Run "php pool session:gc" to clear a backlog at once.
+    |
+    */
+
+    'lottery' => [2, 100],
 ];
