@@ -141,4 +141,20 @@ return [
     */
 
     'lottery' => [2, 100],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Always Send The XSRF-TOKEN Cookie
+    |--------------------------------------------------------------------------
+    |
+    | By default the XSRF-TOKEN cookie is only sent once a CSRF token exists,
+    | which a page that renders a form or calls csrf_token() creates. Turn this
+    | on for a front end that reads the cookie and never loads such a page, such
+    | as an axios or fetch based client, so its first POST is not rejected with a
+    | 419. Every visit to a stateful route then gets a stored session, so leave
+    | it off unless you need it.
+    |
+    */
+
+    'always_send_xsrf_cookie' => false,
 ];
