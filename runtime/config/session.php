@@ -9,7 +9,8 @@ return [
     |
     | Determines how session data is stored. The available options are:
     | - "file"   → Stores sessions in local files.
-    | - "cookie" → Stores session data in encrypted cookies.
+    | - "cookie" → Stores session data in encrypted cookies (max ~4KB).
+    | - "array"  → Keeps sessions in memory for the current process (testing).
     |
     */
 
@@ -113,4 +114,47 @@ return [
     */
 
     'same_site' => env('SESSION_SAME_SITE', 'lax'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Stateless Paths
+    |--------------------------------------------------------------------------
+    |
+    | Request paths that never get a stored session or a session cookie, such
+    | as API routes. The session still works in memory during the request, so
+    | code that touches it does not break. Use the StatelessSession middleware
+    | for single routes. Patterns may use "*" as a wildcard.
+    |
+    */
+
+    'stateless' => ['api/*'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Garbage Collection Lottery
+    |--------------------------------------------------------------------------
+    |
+    | Chances out of a total that a request also removes a slice of the expired
+    | sessions. Each sweep is bounded, so its cost does not grow with the number
+    | of stored sessions. Run "php pool session:gc" to clear a backlog at once.
+    |
+    */
+
+    'lottery' => [2, 100],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Always Send The XSRF-TOKEN Cookie
+    |--------------------------------------------------------------------------
+    |
+    | By default the XSRF-TOKEN cookie is only sent once a CSRF token exists,
+    | which a page that renders a form or calls csrf_token() creates. Turn this
+    | on for a front end that reads the cookie and never loads such a page, such
+    | as an axios or fetch based client, so its first POST is not rejected with a
+    | 419. Every visit to a stateful route then gets a stored session, so leave
+    | it off unless you need it.
+    |
+    */
+
+    'always_send_xsrf_cookie' => false,
 ];
