@@ -1,5 +1,14 @@
 # Release Notes
 
+## v4.2.0 - 2026-11-04
+
+### What's Changed
+
+* readme updated by adding ripple by [@techmahedy](https://github.com/techmahedy) in https://github.com/doppar/doppar/pull/67
+* Add stateless and lottery options to the session configuration by [@techmahedy](https://github.com/techmahedy) in https://github.com/doppar/doppar/pull/68
+
+**Full Changelog**: https://github.com/doppar/doppar/compare/v4.1.3...v4.2.0
+
 ## v4.1.3 - 2026-10-11
 
 ### What's Changed
@@ -332,6 +341,7 @@ Better Maintainability: Centralized exclusion list for sensitive fields.
         'password',
         '_insight_redirect_chain'
 ],
+
 
 
 
